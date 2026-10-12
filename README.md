@@ -1,97 +1,81 @@
 # Medical Diagnosis AI
 
-Medical Diagnosis AI is a university project currently in the **data acquisition stage**.
+AI-powered medical diagnosis project that uses medical condition data from **NHS Inform**, stores the structured dataset in **MongoDB Atlas**, and will later use NLP and deep learning models to predict probable medical conditions from free-text symptoms.
 
-So far, the project focuses on collecting structured medical-condition information from NHS Inform and preparing a verified local dataset for later use.
+## Project Objective
 
----
+The final system is intended to:
 
-## Implemented So Far
+- collect medical condition data from NHS Inform
+- store structured condition data in MongoDB
+- preprocess and normalize medical text
+- train baseline, RNN, LSTM, and Transformer-based models
+- predict probable conditions from free-text symptoms and user metadata
+- rank predicted conditions by probability
+- return warnings and recommendations for predicted conditions
+- expose the workflow through Flask APIs
+- store trained model files in MongoDB GridFS
 
-### NHS Inform A–Z Scraping
+## Current Progress
 
-The scraper starts from the NHS Inform A–Z conditions index:
+### Completed
 
-https://www.nhsinform.scot/illnesses-and-conditions/a-to-z/
+- [x] Created the project structure
+- [x] Configured environment variables with `.env`
+- [x] Connected the project to MongoDB Atlas
+- [x] Built the NHS Inform A-Z page collector
+- [x] Collected NHS Inform condition pages
+- [x] Extracted the required medical fields
+- [x] Manually reviewed and cleaned the extracted dataset
+- [x] Removed unsuitable hub, overview, support, and non-condition pages
+- [x] Validated the final dataset
+- [x] Imported the final dataset into MongoDB Atlas
+- [x] Added a unique index for condition names
+- [x] Verified the data in MongoDB Atlas Data Explorer
 
-It discovers condition links and processes them sequentially.
+## Current Dataset
 
-### Extracted Fields
+The final MongoDB `conditions` collection contains **406 documents**.
 
-For each condition, the scraper currently extracts:
+Each document follows this schema:
 
-- Condition name
-- Symptoms
-- Causes
-- Warnings
-- Recommendations / treatment information
-- Source URL
-
-### Extraction Fallbacks
-
-The scraper includes several fallbacks for pages with different structures:
-
-- Introductory-text fallback when a dedicated symptoms section is missing
-- Warning-text fallback for urgent advice such as `999`, `111`, or urgent GP guidance
-- Linked treatment/prevention-page fallback when recommendations are stored on another NHS Inform page
-
-### Sequential Scraping
-
-The current crawler processes conditions one at a time automatically:
-
-```text
-Condition 1
-    ↓
-Scrape
-    ↓
-Save
-    ↓
-Wait
-    ↓
-Condition 2
-    ↓
-Repeat
+```json
+{
+  "condition": "Condition name",
+  "symptoms": "List or description of symptoms",
+  "causes": "Causes, triggers, or risk factors",
+  "warnings": "Emergency or escalation advice",
+  "recommendations": "Treatment, management, or self-care advice"
+}
 ```
 
-This helps reduce request failures during a long crawl.
+`condition` and `symptoms` are required for retained records.
 
-### Retry Handling
+`causes`, `warnings`, and `recommendations` may be empty when the NHS source does not provide reliable information for that field.
 
-Temporary request failures are retried with increasing delays.
+## MongoDB
 
-The scraper currently handles retryable responses such as:
-
-- 403
-- 408
-- 429
-- 500
-- 502
-- 503
-- 504
-
-### Resume Support
-
-Each successful condition is saved immediately.
-
-If the scraper is interrupted, it can be run again and already-saved condition URLs are skipped.
-
-### Local Dataset Output
-
-The scraper currently generates:
+Database:
 
 ```text
-data/
-├── nhs_conditions_sequential.json
-├── nhs_conditions_sequential.csv
-├── nhs_conditions_errors.json
-└── nhs_conditions_errors.csv
+medical_diagnosis_ai
 ```
 
-The JSON and CSV files contain successfully scraped records, while the error files contain pages that failed during scraping.
+Collection:
 
----
+```text
+conditions
+```
 
-## Current Project Structure
+Current document count:
+
+```text
+406
+```
+
+The `condition` field has a unique index to prevent duplicate condition records.
+
+## Project Structure
 
 ```text
 medical-diagnosis/
@@ -100,12 +84,14 @@ medical-diagnosis/
 │   ├── api/
 │   │
 │   ├── database/
-│   │   └── mongodb.py
+│   │   ├── mongodb.py
+│   │   └── import_conditions.py
 │   │
-│   └── scraper/
-│       └── nhs_scraper.py
+│   └── dataset/
+│       └── nhs_conditions_manual_final.json
 │
 ├── data/
+│   └── raw/
 │
 ├── .env
 ├── .gitignore
@@ -114,109 +100,152 @@ medical-diagnosis/
 └── run.py
 ```
 
----
+## Data Acquisition
 
-## Current Technologies
+The source is the NHS Inform A-Z conditions section:
 
-- Python
-- Requests
-- BeautifulSoup
-- Pandas
-- PyMongo
-- python-dotenv
-- Jupyter
-- ipykernel
-
----
-
-## Current Requirements
-
-```txt
-requests
-beautifulsoup4
-pandas
-pymongo
-python-dotenv
-jupyter
-ipykernel
+```text
+https://www.nhsinform.scot/illnesses-and-conditions/a-to-z/
 ```
 
-Install them with:
+Current acquisition pipeline:
 
-```bash
-pip install -r requirements.txt
+```text
+NHS Inform A-Z
+      ↓
+Discover condition pages
+      ↓
+Collect page content
+      ↓
+Extract required medical fields
+      ↓
+Manual semantic review and cleanup
+      ↓
+Final 406-condition dataset
+      ↓
+MongoDB Atlas
 ```
 
----
+The extracted fields are:
 
-## Environment Variables
+- `condition`
+- `symptoms`
+- `causes`
+- `warnings`
+- `recommendations`
 
-MongoDB configuration is stored in `.env`:
+Missing optional medical information is left empty rather than invented.
+
+## MongoDB Connection
+
+Create a `.env` file in the project root:
 
 ```env
-MONGODB_URI=your_mongodb_connection_string
+MONGODB_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/
 MONGODB_DB=medical_diagnosis_ai
 ```
 
-The `.env` file should not be committed to Git.
+Do not commit `.env` to Git.
 
-MongoDB connectivity has been set up, but scraped records are not being inserted into MongoDB yet.
+Test the connection:
 
----
-
-## Current Dataset Structure
-
-A scraped condition currently looks like this:
-
-```json
-{
-  "condition": "Asthma",
-  "symptoms": "...",
-  "causes": "...",
-  "warnings": "...",
-  "recommendations": "...",
-  "source_url": "...",
-  "symptoms_source": "section",
-  "warnings_source": "section",
-  "recommendations_source": "section",
-  "recommendations_source_url": null,
-  "index_label": "Asthma"
-}
+```powershell
+python -m app.database.mongodb
 ```
 
-The source fields help show whether data came from:
-
-- the normal page section
-- an introductory fallback
-- a warning-text fallback
-- a linked treatment/prevention page
-
----
-
-## Current Status
-
-The project is currently focused on:
+Expected output:
 
 ```text
-NHS Inform
-    ↓
-A–Z condition discovery
-    ↓
-Sequential scraping
-    ↓
-Structured field extraction
-    ↓
-Local JSON / CSV dataset
-    ↓
-Dataset verification
+MongoDB connection successful
+Database: medical_diagnosis_ai
 ```
 
-MongoDB storage, preprocessing, model training, and the Flask API are later stages and are not implemented yet.
+## Importing Conditions
 
----
+The importer is:
 
-## Disclaimer
+```text
+app/database/import_conditions.py
+```
 
-This project is for educational and research purposes only.
+It:
 
-It is not intended to provide professional medical diagnosis or replace advice from qualified healthcare professionals.
+1. loads the final JSON dataset
+2. validates the expected schema
+3. checks required fields
+4. checks duplicate condition names
+5. creates a unique index on `condition`
+6. inserts or updates records using MongoDB upserts
+
+Run:
+
+```powershell
+python -m app.database.import_conditions
+```
+
+Current successful result:
+
+```text
+Loaded 406 conditions
+Dataset validation passed
+
+Import complete
+----------------
+Dataset: 406
+MongoDB total: 406
+```
+
+Because the importer uses upserts, rerunning it updates existing conditions instead of creating duplicates.
+
+## Next Step
+
+The next stage is **Data Preprocessing**.
+
+According to the project specification, this stage will:
+
+- clean the medical text
+- tokenize text
+- normalize symptoms and useful medical phrases
+- prepare model-ready symptom input
+- preserve the original MongoDB condition records
+- prepare data for the baseline TF-IDF + Logistic Regression classifier
+
+The planned modeling pipeline is:
+
+```text
+TF-IDF + Logistic Regression
+            ↓
+           RNN
+            ↓
+          LSTM
+            ↓
+    BERT / BioBERT
+            ↓
+Model comparison
+            ↓
+Top-K probability ranking
+```
+
+## Remaining Project Components
+
+- Preprocessing API using Flask
+- baseline TF-IDF + Logistic Regression model
+- RNN model
+- LSTM model
+- Transformer model using BERT or BioBERT
+- model comparison
+- Top-K accuracy evaluation
+- emergency recall evaluation
+- probability ranking
+- Flask prediction/model API
+- MongoDB `models` collection
+- GridFS model storage
+- experimentation and evaluation report
+- final architecture and model documentation
+
+## Security
+
+- keep MongoDB credentials in `.env`
+- keep `.env` in `.gitignore`
+- never commit passwords or connection credentials
+- rotate credentials immediately if they are exposed

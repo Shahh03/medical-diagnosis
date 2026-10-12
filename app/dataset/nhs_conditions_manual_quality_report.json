@@ -1,0 +1,27 @@
+{
+  "records": 406,
+  "non_empty_counts": {
+    "condition": 406,
+    "symptoms": 406,
+    "causes": 323,
+    "warnings": 275,
+    "recommendations": 370
+  },
+  "duplicate_condition_names": 0,
+  "known_ui_boilerplate_hits": 0,
+  "manual_review_changes": 63,
+  "schema": [
+    "condition",
+    "symptoms",
+    "causes",
+    "warnings",
+    "recommendations"
+  ],
+  "checks": {
+    "all_records_have_exact_schema": true,
+    "all_conditions_non_empty": true,
+    "all_symptoms_non_empty": true,
+    "no_duplicate_condition_names": true,
+    "no_known_ui_boilerplate": true
+  }
+}

@@ -1,29 +1,34 @@
 import os
-from pathlib import Path
-
+import certifi
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
-BASE_DIR = Path(__file__).resolve().parents[2]
-load_dotenv(BASE_DIR / ".env")
+load_dotenv()
 
-mongo_uri = os.getenv("MONGODB_URI")
-mongo_db = os.getenv("MONGODB_DB")
+MONGODB_URI = os.getenv("MONGODB_URI")
+MONGODB_DB = os.getenv("MONGODB_DB")
 
-if not mongo_uri:
+if not MONGODB_URI:
     raise ValueError("MONGODB_URI is missing from .env")
 
-if not mongo_db:
+if not MONGODB_DB:
     raise ValueError("MONGODB_DB is missing from .env")
 
-client = MongoClient(mongo_uri)
+client = MongoClient(
+    MONGODB_URI,
+    tls=True,
+    tlsCAFile=certifi.where(),
+    serverSelectionTimeoutMS=10000,
+)
 
-db = client[mongo_db]
+db = client[MONGODB_DB]
 
-conditions_collection = db["conditions"]
 
-# Actually test the connection
-client.admin.command("ping")
+def test_connection():
+    client.admin.command("ping")
+    print("MongoDB connection successful")
+    print("Database:", MONGODB_DB)
 
-print("MongoDB connection successful")
-print(f"Database: {mongo_db}")
+
+if __name__ == "__main__":
+    test_connection()

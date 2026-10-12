@@ -1,0 +1,390 @@
+[
+  {
+    "condition": "Acid and chemical burns",
+    "fields_changed": [
+      "warnings",
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Acute lymphoblastic leukaemia",
+    "fields_changed": [
+      "causes",
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Acute myeloid leukaemia",
+    "fields_changed": [
+      "causes",
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Acute respiratory infection (ARI)",
+    "fields_changed": [
+      "causes"
+    ]
+  },
+  {
+    "condition": "Appendicitis",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Asthma",
+    "fields_changed": [
+      "warnings",
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Becker muscular dystrophy",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Cerebral palsy",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Cervical cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Cirrhosis",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Congenital muscular dystrophy (CMD)",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Conjunctivitis",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Coronavirus (COVID-19)",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Cough",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Diarrhoea in adults",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Diarrhoea in children and babies",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Duchenne muscular dystrophy (DMD)",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Earache",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Epilepsy",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Fever in adults",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Flu",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Food allergy",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Functional neurological disorder",
+    "fields_changed": [
+      "symptoms"
+    ]
+  },
+  {
+    "condition": "Ganglion cyst",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Headaches",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Hearing loss",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Hives",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Kidney cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Kidney infection",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Lactose intolerance",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Liver cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Lung cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Lupus",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Muscular dystrophy",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Norovirus",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Oculopharyngeal muscular dystrophy (OPMD)",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Oesophageal cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Oral thrush in adults",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Overactive thyroid",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Pancreatic cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Post-polio syndrome",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Scarlet fever",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Sepsis",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Severe head injury",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Sore throat",
+    "fields_changed": [
+      "symptoms",
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Stomach ache and abdominal pain",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Stomach cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Thrush",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Tinnitus",
+    "fields_changed": [
+      "symptoms"
+    ]
+  },
+  {
+    "condition": "Tonsillitis",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Trigeminal neuralgia",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Vaginal discharge",
+    "fields_changed": [
+      "causes",
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Varicose eczema",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Vascular dementia",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Venous leg ulcer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Vitamin B12 deficiency",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Vomiting in adults",
+    "fields_changed": [
+      "recommendations"
+    ]
+  },
+  {
+    "condition": "Warts and verrucas",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Whooping cough",
+    "fields_changed": [
+      "causes",
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Womb (uterus) cancer",
+    "fields_changed": [
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Wrist fracture",
+    "fields_changed": [
+      "symptoms",
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Yellow fever",
+    "fields_changed": [
+      "causes",
+      "warnings"
+    ]
+  },
+  {
+    "condition": "Zika virus",
+    "fields_changed": [
+      "causes",
+      "warnings"
+    ]
+  }
+]
