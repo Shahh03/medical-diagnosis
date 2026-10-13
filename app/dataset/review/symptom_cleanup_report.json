@@ -1,0 +1,21 @@
+{
+  "manual_override_count": 68,
+  "new_cleanup_conditions": [
+    "Acne",
+    "Anorexia nervosa",
+    "Kidney stones",
+    "Lyme disease",
+    "Meningitis",
+    "Mesothelioma",
+    "Migraine",
+    "Ulcerative colitis"
+  ],
+  "records": 406,
+  "records_with_symptom_phrases": 390,
+  "zero_phrase_records": 16,
+  "needs_review": 30,
+  "trusted_with_phrases": 376,
+  "remaining_specific_condition_name_leaks": [],
+  "remaining_source_attributions": [],
+  "remaining_incomplete_leadins": []
+}

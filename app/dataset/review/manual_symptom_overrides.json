@@ -1,10 +1,10 @@
 {
   "_meta": {
     "name": "manual_symptom_overrides",
-    "version": 1,
-    "purpose": "Source-grounded manual symptom phrases for conditions that remained at zero phrases after the conservative automatic symptom parser.",
-    "rule": "Use only when automatic parsing returns zero phrases. Do not overwrite successful automatic parsing.",
-    "record_count": 60
+    "version": 3,
+    "purpose": "Source-grounded manual symptom phrases for parser misses and reviewed fragment / label-leakage corrections.",
+    "rule": "Manual overrides take priority for listed conditions. Use only source-grounded symptom phrases and do not invent symptoms.",
+    "record_count": 68
   },
   "overrides": {
     "Acid and chemical burns": [
@@ -313,6 +313,113 @@
       "slight bleeding under the skin or in the eyes",
       "skin briefly turning blue (cyanosis) with trouble breathing",
       "brief periods where very young babies stop breathing"
+    ],
+    "Migraine": [
+      "usually an intense headache on one side of the head",
+      "nausea",
+      "vomiting",
+      "increased sensitivity to light and sound",
+      "sweating",
+      "poor concentration",
+      "feeling very hot or very cold",
+      "abdominal (tummy) pain",
+      "diarrhoea",
+      "dizziness (light headedness)",
+      "visual problems - like seeing flashing lights, zig-zag patterns or blind spots",
+      "numbness or a tingling sensation like pins and needles",
+      "difficulty speaking",
+      "feeling dizzy or off balance",
+      "loss of consciousness - although this is unusual"
+    ],
+    "Ulcerative colitis": [
+      "recurring diarrhoea, which may contain blood, mucus or pus",
+      "abdominal pain",
+      "needing to poo often",
+      "extreme tiredness (fatigue)",
+      "loss of appetite",
+      "weight loss",
+      "painful and swollen joints (arthritis)",
+      "mouth ulcers",
+      "areas of painful, red and swollen skin",
+      "irritated and red eyes",
+      "diarrhoea 6 or more times a day",
+      "blood or mucus in your poo",
+      "severe abdominal pain",
+      "shortness of breath",
+      "a fast or irregular heartbeat",
+      "a high temperature (fever)",
+      "blood in your poo becoming more obvious"
+    ],
+    "Lyme disease": [
+      "a circular rash around the tick bite",
+      "several rashes in different parts of their body",
+      "tiredness (fatigue)",
+      "muscle pain",
+      "joint pain",
+      "headaches",
+      "a high temperature (fever)",
+      "chills",
+      "neck stiffness"
+    ],
+    "Meningitis": [
+      "a high temperature (fever) over 38°C (100.4°F)",
+      "being sick",
+      "a headache",
+      "a blotchy rash that doesn't fade when a glass is rolled over it",
+      "a stiff neck",
+      "a dislike of bright lights",
+      "drowsiness or unresponsiveness",
+      "seizures (fits)"
+    ],
+    "Kidney stones": [
+      "a persistent ache in the lower back, which is sometimes also felt in the groin",
+      "periods of intense pain in the back or side of your abdomen, or occasionally in your groin",
+      "feeling restless and unable to lie still",
+      "nausea (feeling sick)",
+      "needing to urinate more often than normal",
+      "pain when you urinate (dysuria)",
+      "blood in your urine (haematuria)"
+    ],
+    "Anorexia nervosa": [
+      "your weight and height may be lower than the healthy range expected for your age",
+      "an unusually low body mass index (BMI) or rapidly lose weight over a short time",
+      "severely restricting food, drink and calories so that your body doesn't get the nutrition it needs",
+      "thinking about food a lot",
+      "being very careful about what you eat, such as avoiding eating any foods you see as fattening or unhealthy",
+      "making yourself sick after food or using drugs like laxatives or weight loss medication",
+      "believing you're overweight when you're a healthy weight or underweight",
+      "avoiding looking in mirrors or wearing baggy clothes",
+      "constantly checking your weight and comparing yourself to others",
+      "your periods may stop",
+      "doing an excessive amount of exercise",
+      "physical changes, like feeling lightheaded or dizzy, hair loss or dry skin",
+      "feeling tired and cold",
+      "changes to your bone density make them more fragile and more likely to break",
+      "difficulty concentrating, which affects your work or study",
+      "changes to the way you think which may include making very strict rules for yourself",
+      "compulsive checking of ingredient lists and nutrition labels",
+      "fixation on eating foods that are considered healthy or clean"
+    ],
+    "Acne": [
+      "blackheads - small black or yellowish bumps on the skin",
+      "whiteheads - similar to blackheads but may be firmer",
+      "papules - small red bumps that may feel tender or sore",
+      "pustules - similar to papules, but have a white tip in the centre caused by a build-up of pus",
+      "nodules - large hard lumps that build up beneath the surface of the skin and can be painful",
+      "large pus-filled lumps that can lead to scarring"
+    ],
+    "Mesothelioma": [
+      "shortness of breath",
+      "chest pain that feels heavy, dull or aching",
+      "a high temperature (fever) and heavy sweating at night",
+      "extreme tiredness (fatigue)",
+      "weight loss",
+      "loss of appetite",
+      "a cough that does not go away",
+      "swelling in the tummy (abdomen)",
+      "tummy pain",
+      "feeling sick (nausea)",
+      "changes in your normal bowel function like constipation or diarrhoea"
     ]
   }
 }
