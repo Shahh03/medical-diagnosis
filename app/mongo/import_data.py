@@ -34,44 +34,83 @@ REQUIRED_FIELDS = {
 def validate_record(record, index):
     if set(record.keys()) != REQUIRED_FIELDS:
         raise ValueError(
-            f"Invalid fields in record {index}: {record.get('condition')}"
+            f"Invalid fields in record {index}: "
+            f"{record.get('condition')}"
         )
 
+    for field in REQUIRED_FIELDS:
+        if not isinstance(record[field], str):
+            raise ValueError(
+                f"{record.get('condition', f'Record {index}')} "
+                f"-> {field} must be a string"
+            )
+
     if not record["condition"].strip():
-        raise ValueError(f"Record {index} has empty condition")
+        raise ValueError(
+            f"Record {index} has empty condition"
+        )
 
     if not record["symptoms"].strip():
         raise ValueError(
             f"{record['condition']} has empty symptoms"
         )
 
-    for field in REQUIRED_FIELDS:
-        if not isinstance(record[field], str):
-            raise ValueError(
-                f"{record['condition']} -> {field} must be a string"
-            )
 
-
-def main():
+def load_conditions():
     if not DATA_FILE.exists():
-        raise FileNotFoundError(f"Dataset not found: {DATA_FILE}")
+        raise FileNotFoundError(
+            f"Dataset not found: {DATA_FILE}"
+        )
 
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        conditions = json.load(f)
+    with DATA_FILE.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
+        conditions = json.load(file)
 
-    print(f"Loaded {len(conditions)} conditions")
+    if not isinstance(conditions, list):
+        raise TypeError(
+            "Expected the conditioned dataset to contain a list."
+        )
 
+    return conditions
+
+
+def validate_conditions(conditions):
     seen = set()
 
     for index, record in enumerate(conditions):
-        validate_record(record, index)
+        validate_record(
+            record,
+            index,
+        )
 
         name = record["condition"].strip()
 
         if name in seen:
-            raise ValueError(f"Duplicate condition: {name}")
+            raise ValueError(
+                f"Duplicate condition: {name}"
+            )
 
         seen.add(name)
+
+
+def import_conditions():
+    """
+    Validate the conditioned five-field dataset and upsert it
+    into MongoDB's `conditions` collection.
+
+    Returns a summary dictionary so Flask can expose this action
+    through the Data Handling API.
+    """
+
+    conditions = load_conditions()
+
+    print(
+        f"Loaded {len(conditions)} conditions"
+    )
+
+    validate_conditions(conditions)
 
     print("Dataset validation passed")
 
@@ -85,23 +124,50 @@ def main():
 
     operations = [
         ReplaceOne(
-            {"condition": record["condition"]},
+            {
+                "condition": record["condition"]
+            },
             record,
             upsert=True,
         )
         for record in conditions
     ]
 
-    result = collection.bulk_write(operations)
+    if not operations:
+        return {
+            "dataset": 0,
+            "inserted": 0,
+            "modified": 0,
+            "matched": 0,
+            "mongodb_total": collection.count_documents({}),
+        }
+
+    result = collection.bulk_write(
+        operations
+    )
+
+    summary = {
+        "dataset": len(conditions),
+        "inserted": result.upserted_count,
+        "modified": result.modified_count,
+        "matched": result.matched_count,
+        "mongodb_total": collection.count_documents({}),
+    }
 
     print()
     print("Import complete")
     print("----------------")
-    print("Dataset:", len(conditions))
-    print("Inserted:", result.upserted_count)
-    print("Modified:", result.modified_count)
-    print("Matched:", result.matched_count)
-    print("MongoDB total:", collection.count_documents({}))
+    print("Dataset:", summary["dataset"])
+    print("Inserted:", summary["inserted"])
+    print("Modified:", summary["modified"])
+    print("Matched:", summary["matched"])
+    print("MongoDB total:", summary["mongodb_total"])
+
+    return summary
+
+
+def main():
+    import_conditions()
 
 
 if __name__ == "__main__":

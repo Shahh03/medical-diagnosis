@@ -4,7 +4,7 @@ import re
 import sys
 import time
 from pathlib import Path
-from urllib.parse import urljoin, urldefrag, urlparse
+from urllib.parse import urljoin, urldefrag
 
 import requests
 from bs4 import BeautifulSoup
@@ -37,6 +37,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 OUTPUT_JSON = OUTPUT_DIR / "nhs_all_pages.json"
 ERROR_JSON = OUTPUT_DIR / "nhs_all_pages_errors.json"
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -50,7 +51,6 @@ HEADERS = {
     "Accept-Language": "en-GB,en;q=0.9",
     "Connection": "keep-alive",
 }
-
 
 REQUEST_TIMEOUT = 30
 
@@ -77,16 +77,11 @@ RETRY_STATUS_CODES = {
 # ============================================================
 
 def normalize_whitespace(text):
-    return re.sub(
-        r"\s+",
-        " ",
-        text or ""
-    ).strip()
+    return re.sub(r"\s+", " ", text or "").strip()
 
 
 def normalize_url(url):
     clean_url, _ = urldefrag(url)
-
     return clean_url.rstrip("/") + "/"
 
 
@@ -95,26 +90,19 @@ def load_json(path, default):
         return default
 
     try:
-        with path.open(
-            "r",
-            encoding="utf-8"
-        ) as file:
+        with path.open("r", encoding="utf-8") as file:
             return json.load(file)
-
     except Exception:
         return default
 
 
 def save_json(path, data):
-    with path.open(
-        "w",
-        encoding="utf-8"
-    ) as file:
+    with path.open("w", encoding="utf-8") as file:
         json.dump(
             data,
             file,
             ensure_ascii=False,
-            indent=2
+            indent=2,
         )
 
 
@@ -122,71 +110,46 @@ def save_json(path, data):
 # REQUEST WITH RETRY
 # ============================================================
 
-def get_with_retry(
-    session,
-    url
-):
-    for attempt in range(
-        MAX_RETRIES + 1
-    ):
-
+def get_with_retry(session, url):
+    for attempt in range(MAX_RETRIES + 1):
         try:
             response = session.get(
                 url,
-                timeout=REQUEST_TIMEOUT
+                timeout=REQUEST_TIMEOUT,
             )
 
             if response.status_code == 200:
                 return response
 
-            if (
-                response.status_code
-                not in RETRY_STATUS_CODES
-            ):
+            if response.status_code not in RETRY_STATUS_CODES:
                 response.raise_for_status()
 
             if attempt >= MAX_RETRIES:
                 response.raise_for_status()
 
-            wait_seconds = (
-                BACKOFF_BASE_SECONDS
-                * (2 ** attempt)
-            )
+            wait_seconds = BACKOFF_BASE_SECONDS * (2 ** attempt)
 
             print(
-                f"    HTTP "
-                f"{response.status_code}. "
-                f"Retrying in "
-                f"{wait_seconds}s..."
+                f"    HTTP {response.status_code}. "
+                f"Retrying in {wait_seconds}s..."
             )
 
-            time.sleep(
-                wait_seconds
-            )
+            time.sleep(wait_seconds)
 
         except requests.RequestException:
-
             if attempt >= MAX_RETRIES:
                 raise
 
-            wait_seconds = (
-                BACKOFF_BASE_SECONDS
-                * (2 ** attempt)
-            )
+            wait_seconds = BACKOFF_BASE_SECONDS * (2 ** attempt)
 
             print(
                 "    Request failed. "
-                f"Retrying in "
-                f"{wait_seconds}s..."
+                f"Retrying in {wait_seconds}s..."
             )
 
-            time.sleep(
-                wait_seconds
-            )
+            time.sleep(wait_seconds)
 
-    raise RuntimeError(
-        f"Failed to request {url}"
-    )
+    raise RuntimeError(f"Failed to request {url}")
 
 
 # ============================================================
@@ -205,46 +168,28 @@ EXCLUDED_PREFIXES = [
 ]
 
 
-def is_condition_link(
-    label,
-    url
-):
-    label_lower = (
-        label.strip().lower()
-    )
-
-    url_lower = (
-        normalize_url(url).lower()
-    )
+def is_condition_link(label, url):
+    label_lower = label.strip().lower()
+    url_lower = normalize_url(url).lower()
 
     if not label_lower:
         return False
 
-    if (
-        label_lower
-        in EXCLUDED_INDEX_LABELS
-    ):
+    if label_lower in EXCLUDED_INDEX_LABELS:
         return False
 
     for prefix in EXCLUDED_PREFIXES:
-
-        if label_lower.startswith(
-            prefix
-        ):
+        if label_lower.startswith(prefix):
             return False
 
-    if (
-        "/illnesses-and-conditions/"
-        not in url_lower
-    ):
+    if "/illnesses-and-conditions/" not in url_lower:
         return False
 
     if "/a-to-z/" in url_lower:
         return False
 
     root_url = normalize_url(
-        "https://www.nhsinform.scot/"
-        "illnesses-and-conditions/"
+        "https://www.nhsinform.scot/illnesses-and-conditions/"
     ).lower()
 
     if url_lower == root_url:
@@ -253,103 +198,68 @@ def is_condition_link(
     return True
 
 
-def discover_condition_links(
-    session
-):
-    print(
-        "Loading NHS A-Z index..."
-    )
+def discover_condition_links(session):
+    print("Loading NHS A-Z index...")
 
     response = get_with_retry(
         session,
-        A_Z_URL
+        A_Z_URL,
     )
 
     soup = BeautifulSoup(
         response.content,
-        "html.parser"
+        "html.parser",
     )
 
     discovered = {}
 
-    for anchor in soup.find_all(
-        "a",
-        href=True
-    ):
-
+    for anchor in soup.find_all("a", href=True):
         label = normalize_whitespace(
-            anchor.get_text(
-                " ",
-                strip=True
-            )
+            anchor.get_text(" ", strip=True)
         )
 
         absolute_url = normalize_url(
             urljoin(
                 A_Z_URL,
-                anchor["href"]
+                anchor["href"],
             )
         )
 
         if not is_condition_link(
             label,
-            absolute_url
+            absolute_url,
         ):
             continue
 
-        discovered[
-            absolute_url
-        ] = label
+        discovered[absolute_url] = label
 
     results = [
         {
             "index_label": label,
-            "url": url
+            "url": url,
         }
-        for url, label
-        in discovered.items()
+        for url, label in discovered.items()
     ]
 
     results.sort(
-        key=lambda item:
-        item["index_label"].lower()
+        key=lambda item: item["index_label"].lower()
     )
 
     return results
 
 
 # ============================================================
-# PAGE → READABLE MARKDOWN-LIKE TEXT
+# PAGE -> READABLE MARKDOWN-LIKE TEXT
 # ============================================================
 
-def extract_page_content(
-    soup
-):
+def extract_page_content(soup):
     """
-    Preserve the page structure instead of trying
-    to classify medical information.
-
-    Output looks like:
-
-    # Condition title
-
-    Intro paragraph
-
-    ## Symptoms
-
-    Text
-
-    - item
-    - item
-
-    ### Contact your GP
-
-    ...
+    Preserve page structure instead of trying to classify
+    medical information during scraping.
     """
 
     content = []
 
-    # Prefer page <main> if present.
     container = soup.find("main")
 
     if container is None:
@@ -365,8 +275,6 @@ def extract_page_content(
             "li",
         ]
     ):
-
-        # Ignore navigation/footer/header elements.
         if element.find_parent(
             [
                 "nav",
@@ -377,326 +285,237 @@ def extract_page_content(
             continue
 
         text = normalize_whitespace(
-            element.get_text(
-                " ",
-                strip=True
-            )
+            element.get_text(" ", strip=True)
         )
 
         if not text:
             continue
 
-        # Preserve heading hierarchy.
         if element.name == "h1":
-
-            content.append(
-                f"# {text}"
-            )
+            content.append(f"# {text}")
 
         elif element.name == "h2":
-
-            content.append(
-                f"\n## {text}"
-            )
+            content.append(f"\n## {text}")
 
         elif element.name == "h3":
-
-            content.append(
-                f"\n### {text}"
-            )
+            content.append(f"\n### {text}")
 
         elif element.name == "h4":
-
-            content.append(
-                f"\n#### {text}"
-            )
+            content.append(f"\n#### {text}")
 
         elif element.name == "li":
-
-            content.append(
-                f"- {text}"
-            )
+            content.append(f"- {text}")
 
         elif element.name == "p":
+            content.append(text)
 
-            content.append(
-                text
-            )
-
-    return "\n".join(
-        content
-    ).strip()
+    return "\n".join(content).strip()
 
 
 # ============================================================
 # SCRAPE ONE COMPLETE PAGE
 # ============================================================
 
-def collect_page(
-    session,
-    item
-):
+def collect_page(session, item):
     response = get_with_retry(
         session,
-        item["url"]
+        item["url"],
     )
 
     soup = BeautifulSoup(
         response.content,
-        "html.parser"
+        "html.parser",
     )
 
     h1 = soup.find("h1")
 
     if h1:
         title = normalize_whitespace(
-            h1.get_text(
-                " ",
-                strip=True
-            )
+            h1.get_text(" ", strip=True)
         )
-
     else:
-        title = item[
-            "index_label"
-        ]
+        title = item["index_label"]
 
-    page_content = (
-        extract_page_content(
-            soup
-        )
-    )
+    page_content = extract_page_content(soup)
 
     return {
         "title": title,
-        "index_label":
-            item["index_label"],
-        "url": normalize_url(
-            response.url
-        ),
-        "content":
-            page_content,
+        "index_label": item["index_label"],
+        "url": normalize_url(response.url),
+        "content": page_content,
     }
 
 
 # ============================================================
-# MAIN
+# SCRAPE ALL PAGES
 # ============================================================
 
-def main():
+def collect_all_pages():
+    """
+    Scrape the NHS Inform A-Z pages.
+
+    This function is intentionally reusable:
+    - Flask can call it.
+    - This file can also call it directly from the command line.
+
+    Existing output is loaded first, so scraping can resume.
+    """
 
     session = requests.Session()
+    session.headers.update(HEADERS)
 
-    session.headers.update(
-        HEADERS
-    )
-
-    condition_links = (
-        discover_condition_links(
-            session
-        )
-    )
-
-    total = len(
-        condition_links
-    )
+    condition_links = discover_condition_links(session)
+    total = len(condition_links)
 
     print()
-    print(
-        f"Conditions discovered: "
-        f"{total}"
-    )
+    print(f"Conditions discovered: {total}")
 
-    # Resume support.
     pages = load_json(
         OUTPUT_JSON,
-        []
+        [],
     )
 
     errors = load_json(
         ERROR_JSON,
-        []
+        [],
     )
 
     saved_urls = {
-        normalize_url(
-            page["url"]
-        )
+        normalize_url(page["url"])
         for page in pages
         if page.get("url")
     }
 
-    print(
-        f"Already collected: "
-        f"{len(saved_urls)}"
-    )
-
-    print(
-        f"Remaining: "
-        f"{total - len(saved_urls)}"
-    )
-
+    print(f"Already collected: {len(saved_urls)}")
+    print(f"Remaining: {total - len(saved_urls)}")
     print()
+
+    skipped = 0
 
     for index, item in enumerate(
         condition_links,
-        start=1
+        start=1,
     ):
-
         target_url = normalize_url(
             item["url"]
         )
 
         if target_url in saved_urls:
+            skipped += 1
 
             print(
                 f"[{index}/{total}] "
-                f"SKIP -> "
-                f"{item['index_label']}"
+                f"SKIP -> {item['index_label']}"
             )
-
             continue
 
         print(
             f"[{index}/{total}] "
-            f"COLLECTING -> "
-            f"{item['index_label']}"
+            f"COLLECTING -> {item['index_label']}"
         )
 
         try:
-
             page = collect_page(
                 session,
-                item
+                item,
             )
 
-            pages.append(
-                page
-            )
+            pages.append(page)
+            saved_urls.add(page["url"])
 
-            saved_urls.add(
-                page["url"]
-            )
-
-            # Remove previous error
-            # if this URL later succeeds.
             errors = [
                 error
                 for error in errors
                 if normalize_url(
-                    error.get(
-                        "url",
-                        ""
-                    )
-                )
-                != target_url
+                    error.get("url", "")
+                ) != target_url
             ]
 
-            # Save after EVERY page.
+            # Save after every successful page.
             save_json(
                 OUTPUT_JSON,
-                pages
+                pages,
             )
 
             save_json(
                 ERROR_JSON,
-                errors
+                errors,
             )
 
             print(
-                f"    SAVED -> "
-                f"{page['title']}"
+                f"    SAVED -> {page['title']}"
             )
 
             print(
                 f"    Content length: "
-                f"{len(page['content']):,} "
-                f"characters"
+                f"{len(page['content']):,} characters"
             )
 
         except Exception as error:
-
             print(
-                f"    FAILED -> "
-                f"{error}"
+                f"    FAILED -> {error}"
             )
 
             errors = [
                 existing
                 for existing in errors
                 if normalize_url(
-                    existing.get(
-                        "url",
-                        ""
-                    )
-                )
-                != target_url
+                    existing.get("url", "")
+                ) != target_url
             ]
 
-            errors.append({
-                "index_label":
-                    item["index_label"],
-
-                "url":
-                    item["url"],
-
-                "error":
-                    str(error),
-            })
+            errors.append(
+                {
+                    "index_label": item["index_label"],
+                    "url": item["url"],
+                    "error": str(error),
+                }
+            )
 
             save_json(
                 ERROR_JSON,
-                errors
+                errors,
             )
 
         if index < total:
-
             delay = random.uniform(
                 MIN_DELAY_SECONDS,
-                MAX_DELAY_SECONDS
+                MAX_DELAY_SECONDS,
             )
 
             print(
-                f"    Waiting "
-                f"{delay:.1f}s..."
+                f"    Waiting {delay:.1f}s..."
             )
 
-            time.sleep(
-                delay
-            )
+            time.sleep(delay)
+
+    result = {
+        "discovered": total,
+        "collected": len(pages),
+        "failed": len(errors),
+        "skipped": skipped,
+        "output": str(OUTPUT_JSON.resolve()),
+        "errors_output": str(ERROR_JSON.resolve()),
+    }
 
     print()
-    print(
-        "=" * 70
-    )
+    print("=" * 70)
+    print("PAGE COLLECTION FINISHED")
+    print("=" * 70)
+    print(f"Collected pages: {result['collected']}")
+    print(f"Failed pages: {result['failed']}")
+    print(f"Output: {result['output']}")
+    print(f"Errors: {result['errors_output']}")
 
-    print(
-        "PAGE COLLECTION FINISHED"
-    )
+    return result
 
-    print(
-        "=" * 70
-    )
 
-    print(
-        f"Collected pages: "
-        f"{len(pages)}"
-    )
+# ============================================================
+# COMMAND-LINE ENTRY POINT
+# ============================================================
 
-    print(
-        f"Failed pages: "
-        f"{len(errors)}"
-    )
-
-    print(
-        f"Output: "
-        f"{OUTPUT_JSON.resolve()}"
-    )
-
-    print(
-        f"Errors: "
-        f"{ERROR_JSON.resolve()}"
-    )
+def main():
+    collect_all_pages()
 
 
 if __name__ == "__main__":
