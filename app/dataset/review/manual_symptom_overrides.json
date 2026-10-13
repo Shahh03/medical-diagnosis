@@ -1,0 +1,318 @@
+{
+  "_meta": {
+    "name": "manual_symptom_overrides",
+    "version": 1,
+    "purpose": "Source-grounded manual symptom phrases for conditions that remained at zero phrases after the conservative automatic symptom parser.",
+    "rule": "Use only when automatic parsing returns zero phrases. Do not overwrite successful automatic parsing.",
+    "record_count": 60
+  },
+  "overrides": {
+    "Acid and chemical burns": [
+      "visible scarring",
+      "sight loss",
+      "restricted use of limbs or muscles"
+    ],
+    "Blisters": [
+      "small pockets of fluid that usually form in the upper layers of skin",
+      "filled with a clear fluid (serum)",
+      "filled with blood (blood blisters)",
+      "filled with pus if they become inflamed or infected"
+    ],
+    "Bow legs and knock knees in children and young people": [
+      "a gap between the knees when the ankles are pressed together",
+      "a gap between the ankle bones when the knees are pressed together"
+    ],
+    "Breast pain": [
+      "breast pain",
+      "pain running towards the nipple"
+    ],
+    "Breast swelling in men": [
+      "breast swelling",
+      "the area is often tender"
+    ],
+    "Cardiac arrest": [
+      "loss of consciousness",
+      "stop breathing completely",
+      "stop breathing normally"
+    ],
+    "Chronic pain": [
+      "pain that lasts longer than 12 weeks",
+      "pain beyond the natural healing time"
+    ],
+    "Coma": [
+      "unconsciousness",
+      "unresponsive",
+      "cannot be woken"
+    ],
+    "Cough": [
+      "a dry cough that is tickly and doesn't produce any mucus (phlegm)",
+      "a chesty cough that produces phlegm"
+    ],
+    "Croup": [
+      "a barking cough that sounds like a seal",
+      "a harsh sound (stridor) when breathing in",
+      "a hoarse voice",
+      "difficulty breathing"
+    ],
+    "Cuts and grazes": [
+      "cuts may bleed",
+      "grazes involve damage to the surface of the skin"
+    ],
+    "Dementia": [
+      "difficulty remembering",
+      "difficulty thinking",
+      "difficulty speaking",
+      "changes in how you feel and behave"
+    ],
+    "Diabetic foot issues": [
+      "burning foot pain",
+      "pins and needles",
+      "achy foot pain",
+      "toothache-like pain in the foot",
+      "loss of sensation in the foot"
+    ],
+    "Diabetic retinopathy": [
+      "gradually worsening vision",
+      "sudden vision loss",
+      "shapes floating in your field of vision (floaters)",
+      "blurred or patchy vision",
+      "eye pain or redness"
+    ],
+    "Diarrhoea in adults": [
+      "looser, watery or more frequent poo (stools) than is normal for you"
+    ],
+    "Diarrhoea in children and babies": [
+      "looser, watery or more frequent poo (stools) than is normal for children or babies"
+    ],
+    "Discoid eczema": [
+      "red spots or bumps on the skin",
+      "larger pink, red or brown patches",
+      "very itchy patches",
+      "swollen, blistered patches that ooze fluid",
+      "dry, crusty, cracked and flaky patches"
+    ],
+    "Diverticular disease and diverticulitis": [
+      "abdominal pain",
+      "bloating",
+      "a change in normal bowel habits"
+    ],
+    "Dizziness (lightheadedness)": [
+      "feeling lightheaded",
+      "feeling off balance",
+      "a feeling that your surroundings are spinning"
+    ],
+    "Dry mouth": [
+      "a persistently dry mouth"
+    ],
+    "Earache": [
+      "sharp, dull or burning ear pain",
+      "ear pain that comes and goes or is constant"
+    ],
+    "Epilepsy": [
+      "repeated seizures",
+      "an odd feeling with no loss of awareness",
+      "a trance-like state for a few seconds or minutes",
+      "loss of consciousness",
+      "convulsions (uncontrollable shaking of the body)"
+    ],
+    "Excessive sweating (hyperhidrosis)": [
+      "visible sweat",
+      "wet clothes",
+      "clammy palms",
+      "excessive sweating affecting the whole body or certain areas"
+    ],
+    "Farting": [
+      "passing gas from the digestive system out of the back passage",
+      "farting a lot",
+      "smelly farts"
+    ],
+    "Fever in adults": [
+      "body temperature of 38°C or higher",
+      "feeling warm",
+      "feeling cold",
+      "feeling shivery"
+    ],
+    "Fever in children": [
+      "a high temperature"
+    ],
+    "Flat feet in children and young people": [
+      "the arch on the inside of the foot is reduced or absent while standing",
+      "the ankle bone on the inside is more prominent",
+      "the whole foot seems tilted"
+    ],
+    "Ganglion cyst": [
+      "noticeable swelling",
+      "pain",
+      "limited movement in the joint"
+    ],
+    "Ganglion cysts in children and young people": [
+      "swelling in the wrist, fingers or hands"
+    ],
+    "Heart palpitations": [
+      "a pounding heartbeat",
+      "a fluttering heartbeat",
+      "an irregular heartbeat",
+      "sensations in the chest, throat or neck"
+    ],
+    "Impetigo": [
+      "red sores",
+      "thick, golden crusts",
+      "itchy sores",
+      "a high temperature (fever)",
+      "swollen glands",
+      "fluid-filled blisters (bullae)",
+      "yellow crust after blisters burst",
+      "painful blisters",
+      "itchy skin surrounding the blisters"
+    ],
+    "Intoeing (pigeon toe) in children and young people": [
+      "walks with their feet turned"
+    ],
+    "Itchy bottom": [
+      "a strong urge to scratch the skin around the bottom (anus)"
+    ],
+    "Jellyfish and sea creature stings": [
+      "intense pain where you were stung",
+      "an itchy rash",
+      "raised stripes on the skin (welts)"
+    ],
+    "Kidney cancer": [
+      "blood in the pee"
+    ],
+    "Leg cramps": [
+      "sudden pain in the muscles of the leg",
+      "tight and painful affected muscles",
+      "stiff feet and toes",
+      "pain and tenderness in the leg after the cramp"
+    ],
+    "Limb girdle muscular dystrophy": [
+      "muscle weakness in the legs before the arms",
+      "frequent falls",
+      "difficulty running",
+      "difficulty climbing stairs",
+      "difficulty getting up from the floor",
+      "problems raising your arms above your head",
+      "difficulty lifting objects",
+      "problems walking"
+    ],
+    "Mouth ulcer": [
+      "painful sores in the mouth"
+    ],
+    "Muscular dystrophy": [
+      "progressive muscle weakness",
+      "muscle wasting"
+    ],
+    "Neuroendocrine tumours": [
+      "pain in the tummy",
+      "sickness",
+      "diarrhoea",
+      "chest infections",
+      "shortness of breath"
+    ],
+    "Nipple discharge": [
+      "nipple discharge",
+      "white, green or black discharge"
+    ],
+    "Nipple inversion (inside out nipple)": [
+      "the nipple looks folded in with a horizontal crease",
+      "the nipple may remain turned in most of the time"
+    ],
+    "Nosebleed": [
+      "blood flows from one or both nostrils",
+      "heavy or light bleeding from the nose",
+      "bleeding that can last from a few seconds to 15 minutes or more"
+    ],
+    "Pain in the ball of the foot": [
+      "pain in the ball of the foot",
+      "increased discomfort as activity increases"
+    ],
+    "Phobias": [
+      "avoiding contact with the thing that causes fear",
+      "severe anxiety",
+      "depression",
+      "panic attacks"
+    ],
+    "Plantar heel pain": [
+      "heel pain",
+      "increased discomfort as activity increases"
+    ],
+    "Pleurisy": [
+      "sharp chest pain that gets worse when breathing or coughing"
+    ],
+    "Pneumonia": [
+      "breathlessness",
+      "breathing faster than usual",
+      "cough, sometimes with mucus",
+      "chest pain that is worse when breathing or coughing",
+      "high or low temperature with shivering",
+      "feeling sick or vomiting",
+      "confusion or dizziness",
+      "coughing up blood"
+    ],
+    "Popliteal cysts in children and young people": [
+      "a fluid-filled swelling at the back of the knee"
+    ],
+    "Positional talipes in children and young people": [
+      "the foot turns inwards and downwards"
+    ],
+    "Psoriasis": [
+      "dry, red patches of skin covered in silver scales",
+      "itching",
+      "soreness"
+    ],
+    "Scabies": [
+      "intense itching",
+      "a rash",
+      "itching that is often worse at night",
+      "tiny red spots",
+      "crusty sores caused by scratching",
+      "short, wavy and silver-coloured burrow marks on the skin"
+    ],
+    "Stomach ache and abdominal pain": [
+      "cramps in the tummy (abdomen)",
+      "dull aches in the tummy (abdomen)",
+      "severe abdominal pain"
+    ],
+    "Swollen glands": [
+      "swollen lymph glands"
+    ],
+    "Thirst": [
+      "excessive and persistent thirst"
+    ],
+    "Toe walking in children and young people": [
+      "walking on tip toes",
+      "walking without the heel coming into contact with the ground"
+    ],
+    "Toothache": [
+      "pain in and around the teeth and jaws",
+      "pain that can be mild or severe",
+      "sharp pain that can start suddenly",
+      "pain that can be worse at night",
+      "pain that can be worse with hot or cold food or drink",
+      "a sore and tender jaw near the affected tooth"
+    ],
+    "Urinary incontinence": [
+      "peeing by accident",
+      "urine leakage during exercise such as running, lifting weights or jumping"
+    ],
+    "Warts and verrucas": [
+      "small lumps on the skin of the hands and feet",
+      "warts that may develop singly or in clusters"
+    ],
+    "Whooping cough": [
+      "a runny nose",
+      "red and watery eyes",
+      "a sore throat",
+      "a slightly raised temperature",
+      "intense coughing bouts",
+      "coughing up thick mucus",
+      "vomiting after coughing",
+      "gasping for breath after coughing",
+      "a whoop sound after coughing",
+      "the face becoming very red from coughing",
+      "slight bleeding under the skin or in the eyes",
+      "skin briefly turning blue (cyanosis) with trouble breathing",
+      "brief periods where very young babies stop breathing"
+    ]
+  }
+}

@@ -1,0 +1,610 @@
+[
+  {
+    "condition": "Acid and chemical burns",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Chemical burns are tissue injuries caused by acid, alkaline or caustic chemicals. Severe or deep burns can cause visible scarring and, depending on their depth and location, may lead to sight loss or restricted use of limbs or muscles.",
+    "warnings": "Burns caused by acid, alkaline or caustic chemicals can be very damaging and need immediate medical attention. Phone 999 and ask for urgent help."
+  },
+  {
+    "condition": "Arthritis",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field is generic, while a concrete joint symptom list is stored in warnings. Fix the source-field classification upstream.",
+    "symptoms": "Your symptoms will vary depending on the type of arthritis you have.",
+    "warnings": "joint pain\ntenderness in the joints\nstiffness in the joints\ninflammation in and around the joints\nrestricted movement in the joints\nwarm, red skin on your joints\nweakness and muscle wasting"
+  },
+  {
+    "condition": "Blisters",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Blisters are small pockets of fluid that usually form in the upper layers of skin after it's been damaged. Blisters can develop anywhere on the body but are most common on the hands and feet. Most blisters are filled with a clear fluid (serum). This cushions the tissue underneath. It protects the tissue from further damage and allows it to heal. Blisters may be filled with blood (blood blisters) or pus if they become inflamed or infected.",
+    "warnings": "You have blisters that:\nyou think are infected - an infected blister will be filled with yellow or green pus and may be painful, red and hot\nare very painful\nkeep coming back\nare in unusual places like your eyelids or inside your mouth\nappear after severe sunburn, burns, scalds or an allergic reaction\ndevelop after you have come into contact with chemicals or other substances"
+  },
+  {
+    "condition": "Bow legs and knock knees in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Bow legs mean that there is a gap between the knees when the ankles are pressed together. Knock knees are present when there is a gap between the ankle bones when the knees are pressed together.",
+    "warnings": "asymmetry between two legs (legs look different from each other)\nconsistent pain in their legs limiting their activity\nthings haven't improve over 12 months\nbow legs beyond the age of 3, especially after 8\nknock knees before the age of 2\nknock knees after the age of 8"
+  },
+  {
+    "condition": "Bowel incontinence",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field is dominated by management/advice rather than a clean presentation. Revisit the source extraction rather than forcing a regex.",
+    "symptoms": "There are also ways of managing your symptoms of bowel incontinence. Incontinence products (like pads) aren't a treatment for incontinence. However, you might find them helpful day-to-day while you're waiting for assessment or for a treatment to take effect. These products may help you feel more confident during everyday activities, like socialising or exercising. Your local NHS continence service can offer help and advice about continence products. You don't usually need a referral from your GP to make an appointment. You can also buy these products from pharmacies or online. These plugs are made of foam or silicone and are inserted in to your anus (bottom) in a similar way to a tampon. They create a barrier and stop any leaks. Your local NHS continence service can give you advice about how to use these and where to get them. Wear trousers or skirts that are easy to undo and have elasticated waistbands rather than buttons. Disability Rights UK offers access to 9,000 disabled toilets around the UK with a Radar NKS key . The key costs £5.00 and is only sold to people who need use of toilet facilities due to a disability or health condition.",
+    "warnings": "think you have bowel incontinence\nhave any changes in your poo that aren't getting better, like having softer poo, diarrhoea or constipation that isn't usual for you"
+  },
+  {
+    "condition": "Brain stem death",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This is a postmortem/brain-function definition, not a conventional symptom-driven diagnosis target.",
+    "symptoms": "Brain stem death is when a person no longer has any brain stem function. When someone loses their brain stem function permanently, medical professionals will confirm they're dead.",
+    "warnings": ""
+  },
+  {
+    "condition": "Breast pain",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Breast pain is common and anyone can experience it. It's not usually caused by anything serious but, the pain can be severe and may last a long time. The pain can be felt running towards the nipple. This is because nerves in the breast run towards the nipple. Breast pain is not a symptom of breast cancer.",
+    "warnings": ""
+  },
+  {
+    "condition": "Breast swelling in men",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Breast swelling in men (Gynaecomastia) is common and is not usually anything serious. It can affect one side more than the other. The area is often tender.",
+    "warnings": ""
+  },
+  {
+    "condition": "Cardiac arrest",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Cardiac arrest is when the heart suddenly stops pumping blood around the body. This will cause a person to lose consciousness. Their breathing will be affected too. They will either stop breathing completely or stop breathing normally. This usually happens without warning.",
+    "warnings": "Someone:\nloses consciousness and won't respond to you\ncollapses and has a low or undetectable heart beat\nstops breathing\nisn't breathing normally - they may have slow breaths and gasp for air, or have short periods where they look like they're having a fit\nThe call handler will talk you through cardiopulmonary resuscitation (CPR) if it's needed."
+  },
+  {
+    "condition": "Chronic obstructive pulmonary disease (COPD)",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field only gives a broad breathing-difficulty statement, while the warnings field contains the detailed presentation list. Reclassify source fields upstream.",
+    "symptoms": "Chronic obstructive pulmonary disease (COPD) is a collection of lung diseases. It includes chronic bronchitis, emphysema and chronic obstructive airways disease. People with COPD have difficulties breathing. COPD does not usually become noticeable until after the age of 35. Most people diagnosed with the condition are over 50 years old.",
+    "warnings": "you feel more breathlessness when exercising or moving around\nyou have a cough with mucus (phlegm) that never seems to go away\nyou get chest infections often, particularly in winter\nyou're wheezing\nyou're a smoker, or used to be a smoker and you have a persistent chesty cough, especially in the morning\nyou have COPD and you're having a flare-up (particularly bad symptoms) that's worse than normal\nChest pain and coughing up blood (haemoptysis) are not common symptoms of COPD."
+  },
+  {
+    "condition": "Chronic pain",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Chronic or persistent pain is pain that lasts longer than 12 weeks, or beyond the natural healing time",
+    "warnings": ""
+  },
+  {
+    "condition": "Coma",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A coma is a state of unconsciousness where a person is unresponsive and cannot be woken. It can result from injury to the brain, like a severe head injury or stroke . There are also a range of conditions that can cause a coma. A patient may be placed into a coma while in the intensive care unit (ICU) as part of their treatment. This might be called an 'induced coma'. It allows the patient to cope with other ICU procedures, like being on a ventilator. This type of coma is achieved using certain types of anaesthetic drugs. A non-medically induced coma happens because of an injury to the brain.",
+    "warnings": ""
+  },
+  {
+    "condition": "Cough",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A cough is a reflex action to clear your airways of phlegm and irritants such as dust or smoke. It's rarely a sign of anything serious. Most coughs clear up within 3 weeks and don't need any treatment. A dry cough means it's tickly and doesn't produce any mucus (phlegm). A chesty cough means phlegm is produced to help clear your airways. If you smoke, quitting is likely to help improve your cough. Read more about stopping smoking .",
+    "warnings": "you have severe difficulty breathing - for example, you struggle to speak without pausing, gasping or choking\nyou have severe chest pain in the middle of your chest that isn't going away - it may feel like pressure, tightness or squeezing\nyou have pain that spreads to your arms, back, neck and jaw\nyou feel more drowsy than usual or find it more difficult to wake up\nyour lips or skin are turning very pale, blue or grey - on brown or black skin this is easier to see on the palms of your hands\nInformation on breathing problems in children\nare more short of breath than usual\nhave pain when breathing in or coughing\nare feeling confused, dizzy, or lightheaded\nfeel sick or are being sick - for example, you can't keep food or fluids down\nare coughing up blood (haemoptysis)\nhave heart palpitations - this may feel like your heart is racing, going too slowly or skipping a beat or like a fluttering feeling in your chest\nare peeing less than usual - this can be a sign of dehydration\nhave a very high or low temperature - for example, you feel either hot or cold to touch or you're shivering\nIf your GP practice is closed, phone 111. you have breathlessness which is not improving\nyou have had a cough for more than 3 weeks\nyour symptoms are not improving or they are affecting your daily life\nIf your GP is unsure what's causing your cough, they may refer you to a specialist. They may also request some tests, such as a chest X-ray, allergy tests, breathing tests, and an analysis of a sample of your phlegm to check for infection."
+  },
+  {
+    "condition": "Croup",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Children with croup have a barking cough that sounds like a seal. They'll make a harsh sound, known as stridor, when they breathe in. Stridor is often most noticeable when the child cries or coughs. They may also have a hoarse voice and find it difficult to breathe because their airway is blocked. Some children have cold-like symptoms for a few days before developing croup symptoms. Croup symptoms usually only last for a few days and are often worse at night. But they can occasionally last up to 2 weeks.",
+    "warnings": "Your child:\nhas lips or skin that are turning pale, blue or grey - on brown or black skin this is easier to see on the palms of their hands\nhas severe difficulty breathing - they may make grunting noises or suck their stomach in under their ribcage\nis breathing fast or stops or pauses\nis pulling in at their throat area (tracheal tug) or their windpipe is more prominent\nis limp, floppy or not responding like they normally do - they may find it difficult to focus on you or are more difficult to wake up than usual\nis less than 3 months old and has a temperature of 38°C (101°F) or above and has not had a vaccination in the past 2 days\nis less than 3 months old and has a temperature of 36°C (97°F) or less and has not had a vaccination in the past 2 days\nis more short of breath than usual\nhas pain when breathing in or coughing\nis feeling confused, dizzy or lightheaded\nfeels sick or is being sick - for example, they can't keep food or fluids down\nis coughing up blood (haemoptysis)\nhas had a dry nappy for 12 hours or more, or is showing other signs of dehydration\nhas a very high or low temperature - for example, they feel either hot or cold to touch or are shivering\nhas a distinctive barking cough\nIf your GP practice is closed, phone 111. Most cases of croup are mild and can be treated at home. Sitting your child upright and comforting them if they are distressed is important. This is because crying may make symptoms worse. Your child should also drink plenty of fluids to prevent dehydration. Usually, your child will be prescribed medication to help reduce the swelling in their throat. The medication is a single dose of an oral corticosteroid called dexamethasone or prednisolone. Side effects of these medications can include restlessness, vomiting, upset stomach and headache. Steam treatment is not recommended. You should seek urgent medical advice if you notice your child's symptoms getting worse."
+  },
+  {
+    "condition": "Cuts and grazes",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A cut or graze is a skin wound. Cuts may bleed and grazes involve damage to the surface of the skin.",
+    "warnings": "you have a cut and can't stop the bleeding\nthe blood comes out in spurts and is bright red and hard to control\nyou lose feeling near the wound or have trouble moving it\nyou have a bad cut on your face or the palm of your hand\nthe wound is very large or deep\nthere's something stuck in the cut, like a shard of glass - do not try to take it out yourself\na wound has soil, pus or body fluids in it, or it's still dirty after cleaning it\nyou were bitten by a person or a wild or stray animal\na cut is swollen, red and getting more painful, or pus is coming out of it\na cut is larger than around 5cm (2 inches)\nyou've cut yourself and also feel generally unwell or have a high temperature"
+  },
+  {
+    "condition": "Dementia",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Dementia is an umbrella term for a range of conditions associated with damage to the brain or brain cells (neuron). This means the brain cannot work as well as it should. Dementia can affect your ability to remember, think and speak. It also affects how you feel and behave.",
+    "warnings": "Memory loss:\naffects your daily life\nis worrying you or someone you know"
+  },
+  {
+    "condition": "Diabetic foot issues",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Nerve damage causes pain in the foot. It's often described as burning, pins and needles, achy, or like toothache in the foot. This might feel worse when in bed at night or when someone or something touches your feet but can happen at any time. Painless nerve damage is normally a loss of sensation. You may not notice any problems with your foot. You might only notice when you can't feel it being touched during an examination. If this nerve damage is found it increases your risk of future foot problems. Your health care team will help you understand your personal foot risk. You may need regular contact with a health care professional. They will explain what changes you should be looking for.",
+    "warnings": "your foot is changing colour (going very pale or blue), especially with new numbness or pain in the foot\nYou have:\na hot, red swollen foot, (this could show as discoloured on black or brown skin)\nnew damage to the skin of your foot (cuts, sores or breaks in the skin)\na change in your foot shape\na new pain in your foot (especially if you have painless nerve damage)\nPhone 111 if your podiatrist or GP practice is closed. You have diabetes, new foot issues and:\nhave a fever\nare shivering or shaking\nhave nausea\nare vomiting (being sick)\nare feeling unwell"
+  },
+  {
+    "condition": "Diabetic retinopathy",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "You won't usually notice diabetic retinopathy in the early stages, as it doesn't tend to have any obvious symptoms until it's more advanced. However, early signs of the condition can be picked up by taking photographs of the eyes during diabetic eye screening . Contact your optometrist immediately if you experience:\ngradually worsening vision\nsudden vision loss\nshapes floating in your field of vision (floaters)\nblurred or patchy vision\neye pain or redness\nFind an optometry practice\nThese symptoms don't necessarily mean you have diabetic retinopathy, but it's important to get them checked out. Don't wait until your next screening appointment.",
+    "warnings": ""
+  },
+  {
+    "condition": "Diarrhoea in adults",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Diarrhoea is passing looser, watery or more frequent poo (stools) than is normal for you. It affects most people from time to time. It can be distressing and unpleasant but is usually nothing to worry about. It normally clears up in a few days to a week. There is a separate page on diarrhoea in children and babies .",
+    "warnings": "you may have swallowed something poisonous\nyou have a stiff neck and pain when looking at bright lights\nyou have a sudden, severe headache or stomach ache\nyou have blue, grey, pale or blotchy skin, lips or tongue - on brown or black skin this may be easier to see on the palms of the hands or soles of the feet\nyou're having severe difficulty breathing, or taking lots of quick, short breaths\nyou're confused or not responding as usual\nyou still have signs of dehydration after using oral rehydration sachets\nyou keep being sick and cannot keep fluid down\nyou have bloody diarrhoea or bleeding from the bottom\nyou have diarrhoea for more than 7 days\nyou're vomiting for more than 2 days\nPhone 111 if your GP practice is closed."
+  },
+  {
+    "condition": "Diarrhoea in children and babies",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Diarrhoea is passing looser, watery or more frequent poo (stools) than is normal for children or babies. It affects most people from time to time. It can be distressing and unpleasant but is usually nothing to worry about. It normally clears up in a few days to a week. There is a separate page on diarrhoea in adults .",
+    "warnings": "Your child:\nmay have swallowed something poisonous\nhas a stiff neck and pain when looking at bright lights\nhas a sudden, severe headache or stomach ache\nis having severe difficulty breathing, or taking lots of quick, short breaths\nhas blue, grey, pale or blotchy skin, lips or tongue - on brown or black skin this may be easier to see on the palms of the hands or soles of the feet\nfeels unusually cold to touch\nhas a fit (seizure)\nhas a rash that does not fade when you press a glass against it (use the ' glass test ' from Meningitis Now)\nis difficult to wake up, confused or not responding as usual\nis less than 3 months old and has a temperature of 38°C (101°F) or above and has not had a vaccination in the past 2 days\nis less than 3 months old and has a temperature of 36°C (97°F) or less and has not had a vaccination in the past 2 days\nhas blood in their poo or wee\nhas tummy pain that doesn't go away for more than 1 day even after paracetamol or ibuprofen\nkeeps being sick and can't keep down any fluids\nis breathing a bit faster than normal or working a bit harder to breathe\nhas dry skin, lips or tongue\nis drinking or breastfeeding much less than normal\nis under 5 years of age and has signs of dehydration , such as fewer wet nappies\nis aged 5 years or more and still has signs of dehydration after using oral rehydration sachets\nis irritable (unable to settle them with toys, TV, food or hugs even after their fever has come down)\nis over 3 months and has a temperature of 39°C (102°F) or above\nhas a temperature less than 36°C (97°F)\nis getting worse and you're still worried\nhas diarrhoea for more than 7 days\nis vomiting for more than 2 days\nPhone 111 if your GP practice is closed."
+  },
+  {
+    "condition": "Discoid eczema",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Discoid eczema causes a group of red spots or bumps on the skin. These quickly join up to create larger pink, red or brown patches. These can vary in size and are usually very itchy, especially at night. The patches are often swollen, blistered and ooze fluid. Over time, the patches may become dry, crusty, cracked and flaky with a clear centre. This creates a ring effect on the skin. You may have one area of discoid eczema or a few patches. They can happen appear anywhere on the body, though the face and scalp are not normally affected.",
+    "warnings": "You have atopic eczema and:\nit's blistered, crusty, leaking fluid or has spots filled with pus\nit's painful, swollen or feels warm\nit suddenly gets worse or bigger\nyou have a high temperature or feel unwell\nPhone 111 if your GP practice is closed."
+  },
+  {
+    "condition": "Diverticular disease and diverticulitis",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Symptoms of diverticular disease and diverticulitis include abdominal pain, bloating and a change in normal bowel habits.",
+    "warnings": "Contact your GP as soon as possible if you think you have symptoms of diverticulitis. If you have symptoms of diverticular disease and the condition has previously been diagnosed, you do not usually need to contact your GP as the symptoms can be treated at home. If you have not been diagnosed with the condition, contact your GP so they can rule out other conditions with similar symptoms, such as:\na stomach ulcer\npancreatitis\ncholecystitis\nbowel cancer\nIrritable bowel syndrome (IBS) can also cause similar symptoms to diverticular disease. If the infection has badly scarred your large intestine, it may become partially or totally blocked. A totally blocked large intestine is a medical emergency because the tissue of your large intestine will start to decay and eventually split, leading to peritonitis. A partially blocked large intestine is not as urgent, but treatment is still needed. If left untreated, it will affect your ability to digest food and cause you considerable pain. Intestinal blockage from diverticular disease is very rare. Other causes, such as cancer, are more common. This is one of the reasons your GP will investigate your symptoms. In some cases, the blocked part can be removed during surgery. However, if the scarring and blockage is more extensive, a temporary or permanent colostomy may be needed."
+  },
+  {
+    "condition": "Dizziness (lightheadedness)",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Dizziness (lightheadedness) is a common symptom. It's not usually a sign of anything serious but it should still be investigated by a doctor. Dizziness can mean different things to different people. Some people use it to describe feeling lightheaded or off balance. Others use it to describe a feeling that their surroundings are spinning. Dizziness can be caused by a wide range of things. It may not always be easy to identify the underlying cause.",
+    "warnings": "You feel dizzy and:\nyou're worried about your dizziness or vertigo\nit will not go away or it keeps coming back\nyou're finding it harder to hear or speak\nthere's ringing or other sounds in your ears (tinnitus)\nyou have double vision, blurred vision or other changes in your eyesight\nyour face, arms or legs feel numb or weak\nyou have other symptoms like changes to your pulse, fainting or collapsing, headaches, feeling or being sick"
+  },
+  {
+    "condition": "Dry mouth",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "It's normal to occasionally have a dry mouth if you're dehydrated or feeling nervous. A persistently dry mouth can be a sign of an underlying problem though.",
+    "warnings": ""
+  },
+  {
+    "condition": "Earache",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Earache is a common problem, particularly in children. It can be worrying, but it's usually only caused by a minor infection and will often get better in a few days without treatment. Earache can be a sharp, dull or burning ear pain that comes and goes or is constant. One or both ears may be affected.",
+    "warnings": "You do not always need to see a GP as earache will usually get better on its own within a few days. Speak to your pharmacist for advice and treatment if you have earache. Your pharmacist may recommend that you speak to your GP practice if required. You or your child have earache and:\na high temperature (fever)\nvomiting\na severe sore throat\nhearing loss\nswelling around the ear\ndischarge from the ear\nthere is something stuck in your or your child's ear\nthe earache doesn't improve within a few days\nyour child is under 2 and has earache in both ears\nIf your GP practice is closed, phone 111. You or your child:\nhave earache for more than 3 days\nkeep getting earache"
+  },
+  {
+    "condition": "Epilepsy",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "The main symptoms of epilepsy are repeated seizures. There are different types of seizure, depending on which part of the brain it affects. The cells in the brain, known as neurons, conduct electrical signals. They communicate with each other in the brain using chemical messengers. During a seizure, there are abnormal bursts of neurons firing off electrical impulses. This can cause the brain and body to behave strangely. The severity of seizures can differ from person to person. Some people experience an odd feeling with no loss of awareness, or may have a \"trance-like\" state for a few seconds or minutes. Others lose consciousness and have convulsions (uncontrollable shaking of the body). Some people might only have a single seizure. If they do not have a high risk of having further seizures, they would not be regarded as having epilepsy.",
+    "warnings": "Someone has:\na seizure that lasts longer than 5 minutes\nmore than 1 seizure without recovering in between\na seizure for the first time\na seizure and is injured, has breathing problems, or needs emergency medical attention for any other reason\nis violent, agitated, confused or are a danger to themselves after having a seizure\n3 or more seizures which stop on their own within 24 hours and this is unusual for them\nStatus epilepticus is the name for either:\na seizure that lasts longer than 5 minutes (a prolonged seizure)\nmore than one seizure where the person does not regain consciousness in between\nThese are medical emergencies and require treatment as soon as possible. It's important to phone 999 for an ambulance immediately if you suspect status epilepticus. You can be trained to treat these seizure emergencies if you care for someone with epilepsy. If you've been trained to treat the condition, you'll usually have been advised to use either:\na medication called buccal midazolam that comes in liquid form and is given by trickling the liquid onto the inside of the person's cheek or up their nose (this is the most common immediate treatment)\na medication called diazepam that's placed in the person's rectum (less commonly used)\nPhone 999 for an ambulance immediately if you don't have access to rescue medication or you've given the medication and seizures are continuing."
+  },
+  {
+    "condition": "Excessive sweating (hyperhidrosis)",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Excessive sweating can cause visible sweat, wet clothes and clammy palms. It may affect the whole body or only certain areas like the hands and feet. Both sides of the body are usually affected equally. For example, both feet or both hands.",
+    "warnings": "You're sweating excessively and:\nthings you can do yourself are not helping\nit's lasted at least 6 months\nit stops you from getting on with your daily activities\nit happens at least once a week\nit happens at night (night sweats)\nyou have a family history of excessive sweating\nyou're taking medicine for another condition\nYour GP may refer you for tests if they think another condition may be causing your sweating."
+  },
+  {
+    "condition": "Farting",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Farting (flatulence) is passing gas from the digestive system out of the back passage. It's a normal process and something everyone experiences regularly. There are things you can do if you fart a lot or your farts are smelly.",
+    "warnings": ""
+  },
+  {
+    "condition": "Fever in adults",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A fever is usually when your body temperature is 38°C or higher. You may feel warm, cold or shivery. You can find out if you have a fever (high temperature) by using a thermometer to take your temperature. You should try to stay at home and avoid other people if you have a high temperature, to avoid spreading potential illness. There is a separate page on fever in children .",
+    "warnings": "You have a fever and you:\nhave a weakened immune system\nare on immune-suppressant drugs, such as regular steroids, methotrexate, azathioprine or cyclophosphamide\nare on, or recently completed, treatment for cancer, leukaemia or lymphoma\nare a transplant recipient\nare HIV positive\nhave chronic lung disease\nhave asthma which has been treated with medication in the last 3 years\nhave heart disease (excluding blood pressure which is currently well controlled)\nhave diabetes or another metabolic disease\nhave chronic gastrointestinal or liver disease\nhave chronic renal (kidney) disease\nhave cystic fibrosis\nhave neurological conditions such as cerebral palsy, stroke, multiple sclerosis or muscular dystrophy\nhave sickle cell disease\nPhone 111 if your GP practice is closed. you have severe thirst or are peeing less\nyour pee is darker than normal\nyou are lightheaded or weak\nyou have new, severe muscle cramps\nyour symptoms have worsened or you notice new symptoms\nyou've had a fever after recent foreign travel\nIf your GP practice is closed, phone 111."
+  },
+  {
+    "condition": "Fever in children",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "It can be extremely worrying if your child has a high temperature. But it's very common and often clears up by itself without treatment. A quick and easy way to find out whether your child has a fever is to take their temperature using a thermometer.",
+    "warnings": "Your child:\nhas a stiff neck\nhas a rash that does not fade when you press a glass against it ( use the 'glass test' from Meningitis Now )\nis bothered by light\nhas a fit ( febrile seizure ) for the first time (they cannot stop shaking)\nhas unusually cold hands and feet\nhas blue, pale or blotchy skin, lips or tongue\nhas a weak, high-pitched cry that's not like their normal cry\nis drowsy and hard to wake\nis extremely agitated (does not stop crying) or is confused\nfinds it hard to breathe and sucks their stomach in under their ribs\nis not responding like they normally do, or is not interested in feeding or normal activities\nis less than 3 months old and has a temperature of 38°C (101°F) or above and has not had a vaccination in the past 2 days\nis less than 3 months old and has a temperature of 36°C (97°F) or less and has not had a vaccination in the past 2 days\nis over 3 months and has a temperature of 39°C (102°F) or above\nhas other signs of illness, such as a rash, as well as a high temperature\nhas a high temperature that's lasted for 5 days or more\nhas persistent vomiting\ndoes not want to eat, or is not their usual self and you're worried\nhas a high temperature that does not come down with paracetamol\nis dehydrated - such as nappies that are not very wet, sunken eyes, and no tears when they're crying\nIf your GP is closed, phone 111. If your child seems to be otherwise well - for example, if they're playing and attentive - it's less likely they're seriously ill."
+  },
+  {
+    "condition": "Flat feet in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A flat foot is when the arch on the inside of the foot is reduced or absent while standing. The foot can also look like the ankle bone on the inside is more prominent or that the whole foot seems tilted. It's quite normal for children and young people to have flexible flat feet.",
+    "warnings": ""
+  },
+  {
+    "condition": "Ganglion cyst",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "If you have a ganglion cyst the swelling can become noticeable, but often there are no other symptoms. Sometimes a ganglion can cause pain and limit movement in your joint. The pain is usually caused by pressure being applied to the ganglion. Some people are also concerned about the cyst's appearance. Most symptoms settle with time.",
+    "warnings": "the ganglion:\ncontinues to increase in size\nrestricts function\nbecomes hard\nbecomes irregular in shape\nbecomes painful"
+  },
+  {
+    "condition": "Ganglion cysts in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Ganglion cysts are the most common type of swelling in children and young people. They're most often seen in the wrist, fingers and hands. Ganglion cysts are often self limiting, harmless and don't require treatment.",
+    "warnings": ""
+  },
+  {
+    "condition": "Headaches",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom label; including it can make evaluation trivial because the input symptom and class label are nearly identical.",
+    "symptoms": "Most headaches are not serious. In many cases, you can treat your headache at home.",
+    "warnings": "You have a headache and:\nit began after a severe head injury\nit started suddenly and is very severe - it may feel like a blinding pain\nnew sudden symptoms of a stroke , like being unable to walk, having weakness down one side of the face or body, or slurred speech\nsymptoms of meningitis or sepsis , like a high fever with a stiff neck\nare not responding normally, or are very drowsy and struggling to stay awake\nvisual problems that are new and different to any you've experienced before, and are not related to a migraine\nalso feel more confused than usual\nthe whole of your eye is red\nchanges in your vision\nit does not go away and gets worse over time\nis triggered suddenly by coughing, laughing, sneezing, changing posture, or physical effort\nas well as a sore scalp, or jaw pain while chewing, and you're over 50 years old\nthat is new or getting worse, and you're dizzy, vomiting or feeling weak\nare immunocompromised\nare pregnant or have just given birth\nhave been in contact with carbon monoxide\nhave a blood clotting disorder (haemophilia) or are taking blood thinning medicine (like warfarin or apixaban)\nPhone 111 if your GP practice is closed. a headache that is getting worse despite treatment\nfrequent or painful headaches that affect your daily activities or cause you to miss work\na headache that wakes you up when you're sleeping\na headache and currently have, or have had, cancer"
+  },
+  {
+    "condition": "Heart failure",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field only says there is a range of symptoms; the concrete breathlessness/cough/fatigue/swelling list is in warnings.",
+    "symptoms": "When the heart is not pumping blood as well as it should, you can experience a range of symptoms.",
+    "warnings": "You have:\nbreathlessness\na persistent cough\ntiredness or fatigue that occurs even at rest and gets worse with movement\nswelling in the legs or ankles"
+  },
+  {
+    "condition": "Heart palpitations",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Palpitation is an awareness of your heartbeat. For example, your heart might feel like it's pounding, fluttering or beating irregularly. This is often just for a few seconds or minutes. You may feel these sensations in your chest, throat or neck. Palpitations might feel alarming but in most cases they aren't a sign of any significant problems with your heart.",
+    "warnings": "You or someone else has heart palpitations and:\ndizziness\nsudden shortness of breath\nchest pain\nloses consciousness\nYou have heart palpitations and:\nthey keep coming back\nthey're getting worse\nthey last longer than a few minutes\nyou have a heart condition\nyou have a history of heart problems in your family"
+  },
+  {
+    "condition": "High blood pressure (hypertension)",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "The page explicitly says high blood pressure often has no symptoms; severe-warning symptoms should not be treated as the ordinary presentation.",
+    "symptoms": "High blood pressure often has no symptoms. So, if you think you may have high blood pressure, or you're on medication for it, you should check your blood pressure regularly. In rare cases, high blood pressure may cause symptoms.",
+    "warnings": "You have symptoms of very high blood pressure like:\nheadaches\nblurred or double vision\nregular nosebleeds\nshortness of breath"
+  },
+  {
+    "condition": "Impetigo",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "There are 2 types of impetigo:\nnon-bullous impetigo - the most common type\nbullous impetigo\nThe symptoms of non-bullous impetigo begin with the appearance of red sores - usually around the nose and mouth but other areas of the face and the limbs can also be affected. The sores quickly burst leaving behind thick, golden crusts typically around 2cm across. The appearance of these crusts is sometimes likened to cornflakes stuck to the skin. After the crusts dry, they leave a red mark that usually fades without scarring. The time it takes for the redness to disappear can vary between a few days and a few weeks. The sores aren't painful, but they may be itchy. It's important not to touch or scratch the sores because this can spread the infection to other parts of the body, and to other people. Other symptoms, such as a high temperature (fever) and swollen glands , are rare but can occur in more severe cases. The symptoms of bullous impetigo begin with the appearance of fluid-filled blisters (bullae) which usually occur on the central part of the body between the waist and neck, or on the arms and legs. The blisters are usually about 1cm to 2cm across. The blisters may quickly spread, before bursting after several days to leave a yellow crust that usually heals without leaving any scarring. The blisters may be painful and the area of skin surrounding them may be itchy. As with non-bullous impetigo, it's important not to touch or scratch the affected areas of the skin. Symptoms of fever and swollen glands are more common in cases of bullous impetigo. Impetigo does not cause any symptoms until 4 to 10 days after you first become infected. This means that people can easily pass the infection on to others without realising it. There are 2 main types of impetigo, known as non-bullous and bullous impetigo, which have different symptoms. Most people with impetigo have the non-bullous type.",
+    "warnings": "Impetigo isn't usually serious and can be treated by a pharmacist. Your pharmacist may recommend that you contact your GP practice if required. Adults and children over 2 years with impetigo can get advice and treatment directly from a pharmacy."
+  },
+  {
+    "condition": "Intoeing (pigeon toe) in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Intoeing is when your child walks with their feet turned. Some call this hen-toeing or pigeon toeing. This is normal in childhood.",
+    "warnings": ""
+  },
+  {
+    "condition": "Itchy bottom",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Itchy bottom is a strong urge to scratch the skin around your bottom (anus). The anus is the opening at the lower end of the digestive system, where solid waste leaves your body.",
+    "warnings": "A pharmacist can often help to treat an itchy bottom. You can ask if they have a private area to discuss your symptoms. They can suggest treatments like:\ncreams and ointments to relieve itching\nmedication if the symptoms are caused by threadworms\nYou have an itchy bottom that:\ndoesn't get better after 3 to 4 days\nkeeps coming back\nmakes you anxious or depressed\naffects your sleep\nis painful\nis accompanied by other symptoms, like itching elsewhere on your body\nis caused by an underlying condition like piles\nYour GP might need to check your bottom (a rectal examination) to help find out what's causing your itching. You may feel awkward, but this is nothing to be embarrassed or worried about. It's one of the most common examinations GPs carry out. At your appointment, your GP may ask:\nwhether you use creams, powders or soaps around your bottom\nhow long you have had the itching\nwhether the itching gets worse at night or after eating certain foods\nif you have any other symptoms\nYour GP will decide on the best treatment for you depending on what's causing your symptoms. They may suggest:\nthings you can do yourself to ease an itchy bottom\na stronger medication, cream or ointment"
+  },
+  {
+    "condition": "Jellyfish and sea creature stings",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "The main symptoms of sea creature stings are intense pain where you were stung and an itchy rash. Jellyfish and Portuguese man-of-war stings can also cause raised stripes on the skin (welts).",
+    "warnings": "You or someone else has been stung by a sea creature and have:\ndifficulty breathing\nchest pain\nfits or seizures\nsevere swelling around the affected area\nsevere bleeding\nvomiting\nlight-headedness\nloss of consciousness\nYou have been stung by a sea creature:\non your mouth, throat or near your eyes\nand have severe pain that's not going away\nin a tropical country\nwhile travelling outside the UK and have a high temperature or a wound that doesn't get better\nYou must also get help if you've been stung by a stingray."
+  },
+  {
+    "condition": "Kidney cancer",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A small kidney tumour doesn't always cause symptoms. But the most common kidney cancer symptom is blood in the pee. Blood in your pee isn't always a sign of kidney cancer. It can be caused by other conditions. Always tell your GP if you have any symptoms or changes so they can check. Macmillan Cancer Support as more information on the signs and symptoms of kidney cancer.",
+    "warnings": "Always tell your GP if you have symptoms or changes such as blood in your pee so they can check them. If your symptoms or test results suggest kidney cancer, you'll be referred urgently to a specialist."
+  },
+  {
+    "condition": "Leg cramps",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A leg cramp is an episode of sudden pain in the muscles of the leg. It's caused by an involuntary contracting (shortening) of the leg muscle. Cramps usually occur in the calf muscles, although they can affect any part of your leg. This includes your feet and thighs. Cramps can last from a few seconds up to 10 minutes. Thigh muscle cramps tend to last the longest. During a cramping episode, the affected muscles will become tight and painful and the feet and toes will be stiff. After the cramping has passed, you may have pain and tenderness in your leg for several hours. Cramps often happen during the night when you're sleeping.",
+    "warnings": "Leg cramps might be a sign of a more serious health condition. your leg cramps last longer than 10 minutes and don't get better when you start to move\nyour leg cramps develop after you've come into contact with a substance like mercury, lead or dirt that gets in a cut\nIf your GP is closed, phone 111. your leg cramps are affecting your quality of life\nyou're having frequent leg cramps\nyour leg cramps are interfering with your sleep\nyou also have numbness or swelling in your legs\nyour leg muscles are shrinking or becoming weaker\nYour GP will ask about your symptoms and examine your legs and feet. They may also ask if you have other symptoms, like numbness or swelling. This may be a sign that you have secondary leg cramps caused by an underlying condition. In this case, you may need further tests, like blood tests and urine tests, to rule out other conditions."
+  },
+  {
+    "condition": "Limb girdle muscular dystrophy",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "You'll normally notice muscle weakness in the legs before the arms. The muscles of the face are rarely affected. These symptoms can cause:\nfrequent falls\ndifficulty running\ndifficulty climbing stairs\ndifficulty getting up from the floor\nproblems raising your arms above your head\ndifficulty lifting objects\nYou might eventually experience problems walking and need a walking aid or wheelchair. Sometimes, the heart and breathing muscles can be affected depending on the type of LGMD you have. You should have regular check ups for your heart and breathing function to identify any changes. The specific type of limb-girdle MD will determine how quickly it'll progress. Some types develop rapidly and others will get worse slowly.",
+    "warnings": "Bladder problems are common in patients with muscle disorders like muscular dystrophy. You might experience urinary incontinence , where you pee by accident. This is often caused by weakness of the pelvic floor muscles, combined with weakness of the core muscles. You're more likely to experience urinary incontinence if you:\nhave poor mobility\nspend a lot of time sitting down\nPelvic floor exercise may be helpful. An urgent need to pee can sometimes be helped with medication."
+  },
+  {
+    "condition": "Mouth ulcer",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Mouth ulcers are painful sores that appear in the mouth. They're uncomfortable but they're usually harmless. Most clear up by themselves within 1 to 2 weeks. Mouth ulcers are common and can usually be managed at home, without seeing your dentist or GP.",
+    "warnings": "you have a mouth ulcer\nThey can give you advice and treatment. If you have a dental problem you should always phone your dentist first. If you're not registered with any dental practice then you should read our advice on dental emergencies . Your pharmacist may advise that you see your GP or dentist if:\nyour mouth ulcer has lasted 3 weeks\nyou keep getting mouth ulcers\nthe mouth ulcer grows bigger than usual or is near the back of your throat\nyour mouth ulcer becomes more painful or red - this could be a sign of a bacterial infection, which may need treatment with antibiotics\nMouth ulcers are also a possible symptom of hand, foot and mouth disease . Speak to your GP or phone 111 if you're unsure."
+  },
+  {
+    "condition": "Muscular dystrophy",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Muscular dystrophy (MD) refers to a group of inherited genetic muscle conditions. MD causes progressive muscle weakness and muscle wasting because of the degeneration (deterioration) of muscle cells. This means it gets worse over time. It often starts with a particular group of muscles before progressing to affect other muscles in the body.",
+    "warnings": "You or your child has:\nmuscle weakness\nmobility problems"
+  },
+  {
+    "condition": "Neuroendocrine tumours",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Symptoms of neuroendocrine tumours (NETs) will depend on where in the body the NET is. For example, a NET in the digestive system can cause pain in the tummy, sickness or diarrhoea. A NET in the lung may cause chest infections and shortness of breath. Some NETs don't cause symptoms and are found by chance. NETs sometimes make too much of certain hormones. The type of hormone they make depends on the gland the tumour is affecting.",
+    "warnings": ""
+  },
+  {
+    "condition": "Nipple discharge",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Nipple discharge is common and is not usually anything to worry about. Discharge can vary in colour and can be white, green or black. There are a number of milk ducts that open up on to the surface of the nipple. These milk ducts contain fluid and this fluid can sometimes come out of the milk ducts. Occasionally, raw skin around the nipple due to eczema can cause discharge. Nipple discharge itself is not usually a sign of breast cancer.",
+    "warnings": "You have nipple discharge that:\nis from one duct\nis clear yellow in colour\ncontains blood"
+  },
+  {
+    "condition": "Nipple inversion (inside out nipple)",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "The nipple looks folded in with a horizontal crease and may remain turned in most of the time.",
+    "warnings": ""
+  },
+  {
+    "condition": "Nosebleed",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Nosebleeds are not usually a sign of anything serious. You can often treat them at home. During a nosebleed, blood flows from one or both nostrils. It can be heavy or light. It can last from a few seconds to 15 minutes or more.",
+    "warnings": "the bleeding continues for longer than 20 minutes\nthe bleeding is heavy and you've lost a lot of blood\nyou're having difficulty breathing\nyou're feeling weak or dizzy\nyou swallow a large amount of blood that makes you vomit\nthe nosebleed developed after a serious injury, such as a car crash\nyou're taking a blood-thinning medicine (anticoagulant) such as warfarin\nyou have a condition that means your blood cannot clot properly, such as haemophilia\nyou have symptoms of anaemia such as heart palpitations, shortness of breath and a pale complexion\na child under 2 has a nosebleed\nyou have nosebleeds that come and go regularly\nIf your GP practice is closed, phone 111."
+  },
+  {
+    "condition": "Obesity",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This condition is primarily identified by body composition/BMI rather than a symptom phrase from this source text.",
+    "symptoms": "Obesity is a chronic condition. Having obesity means you have too much body fat which could cause risks to your health.",
+    "warnings": ""
+  },
+  {
+    "condition": "Pain in the ball of the foot",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Pain in the ball of the foot tends to develop gradually over time. Activity shouldn't make your existing pain worse overall. Increasing activity can lead to increased discomfort as your body gets used to regaining your activity levels. This kind of pain should ease quickly and your pain should be no worse the morning after.",
+    "warnings": "there's been new, significant trauma within the last 7 days, for example a fall from height or direct blow to the foot\nyour foot is misshapen following a new injury\nyou can't put any weight at all through your foot\nyou have foot pain that has appeared suddenly without any impact or injury\nPhone 111 if your GP is closed. The pain is sometimes described as:\na burning or aching sensation\na shooting pain\ntingling or numbness in the toes\na feeling like there's a small stone stuck under the foot"
+  },
+  {
+    "condition": "Phobias",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "People with phobias usually need to avoid contact with the thing that causes fear. How far someone with a phobia will go to avoid contact varies. For example, someone with a fear of spiders (arachnophobia) may not want to touch a spider. Others may not be able to even look at a picture of a spider. All phobias can limit your daily activities. They can cause severe anxiety and depression . Panic attacks are common among people with phobias. They can be very frightening and distressing. The symptoms often occur suddenly and without warning.",
+    "warnings": ""
+  },
+  {
+    "condition": "Plantar heel pain",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Activity shouldn't make your existing pain worse overall. Increasing activity can lead to increased discomfort as your body gets used to regaining your activity levels. This kind of pain should ease quickly and your pain should be no worse the morning after.",
+    "warnings": "You should stop treating the area with ice if you notice an increase in redness, discolouration or blistering of the skin. If you have any issues with circulation or sensation, you shouldn't use ice as a treatment for plantar heel pain."
+  },
+  {
+    "condition": "Pleurisy",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Pleurisy is inflammation of the layers that cover the lungs (the pleura). It causes sharp chest pain (pleuritic pain) that gets worse when breathing or coughing. It can affect people of all ages. People aged 65 years and over are most at risk because they're more likely to get a chest infection .",
+    "warnings": "you have severe difficulty breathing - for example, you struggle to speak without pausing, gasping or choking\nyou have pain when breathing in or coughing, particularly if you also have other symptoms, such as coughing up blood or leg swelling\nyou have severe chest pain in the middle of your chest that isn't going away - it may feel like pressure, tightness or squeezing\nyou have pain that spreads to your arms, back, neck and jaw\nyou feel more drowsy than usual or find it more difficult to wake up\nyour lips or skin are turning pale, blue or grey - on brown or black skin this is easier to see on the palms of your hands\nhave difficulty breathing - you may be more short of breath than usual\nare feeling confused, dizzy, or lightheaded\nfeel sick or are being sick - for example, you can't keep food or fluids down\nhave heart palpitations - this may feel like your heart is racing, going too slowly or skipping a beat or like a fluttering feeling in your chest\nhave a sharp shoulder pain when breathing deeply\nhave previously had a deep vein thrombosis (DVT) or a blood clot in the lungs (pulmonary embolism)\ntake blood thinning medication\nare peeing less than usual - this can be a sign of dehydration\nhave a very high or low temperature - for example, you feel either hot or cold to touch or you're shivering\nIf your GP is closed, phone 111. you have breathlessness which is not improving\nyou have had a cough for more than 3 weeks\nyour symptoms are not improving or they are affecting your daily life"
+  },
+  {
+    "condition": "Pneumonia",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Symptoms can develop suddenly over 24 to 48 hours or more slowly over several days. They can include breathlessness, breathing faster than usual, cough (sometimes with mucus), chest pain that is worse when breathing or coughing, high or low temperature with shivering, feeling sick or vomiting, confusion or dizziness, and in more serious cases coughing up blood.",
+    "warnings": "you have severe difficulty breathing - for example, you struggle to speak without pausing, gasping or choking\nyou have severe chest pain in the middle of your chest that isn't going away - it may feel like pressure, tightness or squeezing\nyou have pain that spreads to your arms, back, neck and jaw\nyou feel more drowsy than usual or find it more difficult to wake up\nyour lips or skin are turning very pale, blue or grey - on brown or black skin this is easier to see on the palms of your hands\nInformation on breathing problems in children\nyou're more short of breath than usual\nyou have pain when breathing in or coughing\nyou're feeling confused, dizzy, or lightheaded\nyou feel sick or are being sick - for example, you can't keep food or fluids down\nyou're coughing up blood (haemoptysis)\nyou have heart palpitations - this may feel like your heart is racing, going too slowly or skipping a beat or like a fluttering feeling in your chest\nyou're peeing less than usual - this can be a sign of dehydration\nyou have a very high or low temperature - for example, you feel either hot or cold to touch or you're shivering\nPhone 111 if your GP practice is closed. you have breathlessness which is not improving\nyou have had a cough for more than 3 weeks\nyour symptoms are not improving or they are affecting your daily life"
+  },
+  {
+    "condition": "Popliteal cysts in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "A popliteal cyst is a fluid-filled swelling. It appears at the back of the knee in some children. This usually isn't harmful or a sign of infection.",
+    "warnings": ""
+  },
+  {
+    "condition": "Positional talipes in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Positional talipes is a common presentation in newborn babies, where their foot turns inwards and downwards. This may affect one or both feet. The foot remains flexible and can be moved gently through a full range of normal movement. It can be normal for a newborn baby's feet to turn inwards and downwards when at rest and for their legs to be slightly bowed, which can add to the appearance of the feet turning inwards. These changes are common and, over time, the position of the feet will correct.",
+    "warnings": "your baby's foot feels stiff or you are unable to move it\nyour baby's foot seems painful to move\nyour baby's foot position has not improved or resolved within 6-8 weeks"
+  },
+  {
+    "condition": "Psoriasis",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Psoriasis causes patches of skin that are dry, red and covered in silver scales. Sometimes psoriasis causes itching or soreness too. Psoriasis can go through cycles. For example, you may have symptoms for a few weeks or months before they ease or stop.",
+    "warnings": "You have psoriasis and:\nyour skin quickly turns red and you develop white, pus-filled bumps that join together - redness may be harder to see on brown or black skin\nhave psoriasis patches on your feet that turn yellow-brown and are filled with pus\nyour fingers and toes have red, scaly pus-filled bumps on the tips - redness may be harder to see on brown or black skin\nThese can be signs that you have a more serious condition or an infection. You may also have other symptoms such as your heart beating fast, or a high temperature, or feeling hot, cold or shivery. You have:\nsymptoms of psoriasis\npsoriasis and your treatment isn't working or is giving you side effects\npsoriasis and also have pain, stiffness and swelling in your joints that keeps coming back"
+  },
+  {
+    "condition": "Recurrent miscarriage",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "The condition is defined by pregnancy history rather than a current symptom presentation.",
+    "symptoms": "Recurrent miscarriage is when you've experienced 3 or more early miscarriages. 3 or more early miscarriages refers to the total number of early miscarriages you've had. It does not matter if you've had a successful pregnancy in-between miscarriages. The miscarriages do not need to happen one after the other.",
+    "warnings": "struggling to cope after losing a pregnancy\nshowing signs of post-traumatic stress disorder\nshowing signs of perinatal obsessive-compulsive disorder (OCD)\nThey'll be able to help you get appropriate treatment and support."
+  },
+  {
+    "condition": "Scabies",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "The main symptoms of scabies are intense itching and a rash in areas of the body where the mites have burrowed. The itching is often worse at night when your skin is warmer. A scabies rash is made up of tiny red spots. Scratching the rash may cause crusty sores to develop. Burrow marks can be found anywhere on the body. These are short (1cm or less), wavy and silver-coloured lines on the skin. There's a black dot at one end that can be seen with a magnifying glass.",
+    "warnings": "your child is under 2 years old and has symptoms of scabies or someone else in your household has scabies\nyou have scabies and think your skin may be infected or you have another skin condition like eczema\nyou have a crusted, flaky rash on your elbows, knees, hands or feet\nyou've used pharmacy treatment for scabies and your skin is still itching 2 to 4 weeks after treatment has finished"
+  },
+  {
+    "condition": "Severe head injury",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field is generic; the concrete neurological/red-flag presentation is in warnings.",
+    "symptoms": "The symptoms of a severe head injury can vary from person to person.",
+    "warnings": "You or someone else has a head injury and:\nis unresponsive to their name or a gentle chest rub\ncannot stay awake\nhas had a seizure (fit)\nhas fallen from a height like 5 or more stairs\nis having problems with their senses, like hearing loss or double vision\nhas numbness or weakness in any part of their body\nis struggling to walk, balance, speak, write, or understand other people\nhit their head with force, like being hit by a car\nhas a head wound with something inside it, like glass\nhas signs of damage to their skull, like a dent in their head\nhas severe neck pain or cannot move their head\nis confused or was 'knocked out' for any length of time\nhas vomited\nhas a persistent headache that is not helped by painkillers\nis showing unusual behaviour, like being very irritable or crying more than usual\nhas memory loss (amnesia)\nis intoxicated due to alcohol or recreational drugs\nhas a blood clotting disorder (haemophilia) or takes blood thinning medicine (like warfarin or apixaban)\nhas previously had brain surgery\nhas a large bruise or wound to the head or face\nhas a black eye\nhas blood or clear fluid coming from their ears or nose\nhas bruising behind their ears\nthe injury wasn't accidental, for example if someone else has hurt a child on purpose"
+  },
+  {
+    "condition": "Shortness of breath",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "It's normal to get out of breath when you've overexerted yourself. But when breathlessness comes on suddenly and unexpectedly, it's usually a sign of a medical condition.",
+    "warnings": "you have severe difficulty breathing - for example, you struggle to speak without pausing, gasping or choking\nyou have severe chest pain in the middle of your chest that isn't going away - it may feel like pressure, tightness or squeezing\nyou have pain that spreads to your arms, back, neck and jaw\nyou feel more drowsy than usual or find it more difficult to wake up\nyour lips or skin are turning very pale, blue or grey - on brown or black skin this is easier to see on the palms of your hands\nInformation on breathing problems in children\nhave difficulty breathing - you may be more short of breath than usual\nhave pain when breathing in or coughing\nare feeling confused, dizzy, or lightheaded\nfeel sick or are being sick - for example, you can't keep food or fluids down\nare coughing up blood (haemoptysis)\nhave pain or swelling in 1 of your legs\nhave heart palpitations - this may feel like your heart is racing, going too slowly or skipping a beat or like a fluttering feeling in your chest\nIf your GP practice is closed, phone 111. have symptoms that are not improving\nhave had a cough for more than 3 weeks\nYour doctor may ask you some questions, such as:\ndid the breathlessness come on suddenly or slowly? did anything trigger it, such as exercise? how bad is it? does it only happen when you've been active, or when you're not doing anything? is there any pain when you breathe? do you have a cough? do certain positions make it worse - for example, can you lie down? Feeling like you can't get enough air can be scary. Make sure you get help from a healthcare professional. They may give you extra oxygen to breathe if you need it."
+  },
+  {
+    "condition": "Sore throat",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "Sore throats are very common and usually nothing to worry about. They normally get better within a week. Most are caused by minor illnesses such as cold or flu and can be treated at home.",
+    "warnings": "You or your child have:\nsymptoms that are severe or getting worse quickly\ndifficulty breathing or swallowing\nsevere pain\nstarted drooling\na muffled voice\na high-pitched sound as you breathe (stridor)\nIf you have a sore throat, you can get advice and treatment directly from a pharmacy. You don't usually need to get medical advice if you have a sore throat. Your pharmacist may advise you to see your GP if:\nyour symptoms are severe - for example with a high temperature or you feel shivery\nyou have persistent symptoms that haven't started to improve after a week\nyou experience severe sore throats frequently\nyou have a weak immune system - for example, you have HIV , are having chemotherapy , or are taking medication that suppresses your immune system\nIf your GP practice is closed, phone 111 . If you have a persistent sore throat (one that lasts 3 to 4 weeks), you should see your GP who may refer you for further tests. This is because your sore throat may be a symptom of a more serious condition."
+  },
+  {
+    "condition": "Stillbirth",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This is an outcome/event definition rather than a symptom-driven condition label.",
+    "symptoms": "A stillbirth is when a baby dies after the 24th week of a pregnancy or during birth. It's a devastating experience for parents and can affect you and your family in ways you don't expect.",
+    "warnings": ""
+  },
+  {
+    "condition": "Stomach ache and abdominal pain",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Stomach aches are cramps or dull aches in the tummy (abdomen). Most stomach aches do not usually last long and are often not serious. Severe abdominal pain can be more serious.",
+    "warnings": "you're less than 16 weeks pregnant and have severe abdominal pain\nyou have a stomach ache that came on very suddenly or is severe\nit hurts when you touch your stomach\nyou're vomiting blood or your vomit looks like ground coffee\nyour poo is bloody or black and sticky and extremely smelly\nyou can't pee\nyou can't poo or fart\nyou can't breathe\nyou have chest pain\nyou have diabetes and you're vomiting\nsomeone has collapsed\nyour stomach ache gets much worse quickly\nstomach pain or bloating will not go away or keeps coming back\nyou have repeated bouts of stomach cramps and diarrhoea\nyou have stomach pain and problems with swallowing food\nyou're losing weight without trying to\nyou suddenly pee more often or less often\npeeing is suddenly painful\nyou bleed from your bottom or vagina, or have abnormal discharge from your vagina\nyou have diarrhoea that does not go away after a few days\nIf your GP practice is closed, phone 111."
+  },
+  {
+    "condition": "Sudden arrhythmic death syndrome (SADS)",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This is a sudden-death/postmortem diagnosis and is not suitable for a symptom-only classifier.",
+    "symptoms": "Sudden arrhythmic death syndrome (SADS) is when someone dies suddenly and unexpectedly from a cardiac arrest but there's no clear cause.",
+    "warnings": ""
+  },
+  {
+    "condition": "Swollen glands",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Swollen lymph glands are usually a sign of infection. Swollen lymph glands that are caused by an infection usually get better by themselves in 1 to 2 weeks. Sometimes swollen lymph glands can have a more serious cause and may need to be seen by a doctor.",
+    "warnings": "You have swollen glands and you:\nare finding it very difficult to swallow\nhave difficulty breathing\nYou have swollen glands and:\nthey're getting bigger\nthey've not gone down within 1 week\nthey feel hard or do not move when you press them\nyou're having night sweats or have a very high temperature (you feel hot and shivery)\nyou have no other signs of illness or infection\nyou have swollen lymph glands just above or below your collar bone (the bone that runs from your breastbone to each of your shoulders)"
+  },
+  {
+    "condition": "Thirst",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Feeling thirsty all the time and for no good reason isn't normal and should be investigated by your GP. Thirst is normally just the brain's way of warning that you're dehydrated because you're not drinking enough fluid. But excessive and persistent thirst (known as polydipsia) could be a sign of an underlying problem such as diabetes .",
+    "warnings": ""
+  },
+  {
+    "condition": "Toe walking in children and young people",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Toe walking is walking on tip toes, or without the heel coming into contact with the ground. It can happen some, most or all of the time.",
+    "warnings": ""
+  },
+  {
+    "condition": "Toothache",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Toothache is pain in and around the teeth and jaws. It's usually caused by tooth decay. You can feel toothache in many ways. It can come and go or be constant. Eating or drinking can make the pain worse, particularly if the food or drink is hot or cold. The pain can also be mild or severe. It might feel sharp and start suddenly. It can be worse at night, particularly when you're lying down. A lost filling or broken tooth can sometimes start the pain. It can also sometimes be difficult to decide whether the pain is in your upper or lower teeth. When a lower molar tooth is affected, the pain can often feel like it's coming from the ear. Toothache in other upper teeth may feel like it's coming from the sinuses, the small, air-filled cavities behind your cheekbones and forehead. The area of your jaw close to the infected tooth may also be sore and tender to touch. It's also possible for periodontal disease to give rise to a dull pain. Periodontal disease is a bacterial infection that affects the soft and hard structures that support the teeth.",
+    "warnings": ""
+  },
+  {
+    "condition": "Urinary incontinence",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Urinary incontinence is when you pee by accident. It can happen when doing exercise like running, lifting weights at the gym or jumping on a trampoline. Urinary incontinence can affect anyone. It tends to be more common in women. Although it's common, it shouldn't be thought of as normal. There are things you can do to reduce the chance of this happening and improve your symptoms.",
+    "warnings": "You have any symptoms of urinary incontinence, such as:\npeeing by accident\nfeeling a sudden need to pee and are unable to stop it"
+  },
+  {
+    "condition": "Vomiting in adults",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom/presentation label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "Nausea and vomiting in adults isn't usually a sign of anything serious. It tends to only last 1 or 2 days. Vomiting is the body's way of getting rid of harmful substances from the stomach, or it may be a reaction to something that has irritated the gut. One of the most common causes of vomiting in adults is gastroenteritis . This is an infection of the gut usually caused by bacteria or a virus. It'll normally improve within a few days. Vomiting can occasionally be a sign of something more serious, such as appendicitis . There is a separate page on vomiting in children and babies . If you're vomiting after a head injury, there are separate pages on severe head injury and minor head injury .",
+    "warnings": "You're vomiting and you also have:\nsudden, severe abdominal (tummy) pain\nsevere chest pain\nblood in your vomit or what looks like coffee granules\nhave green or yellow-green vomit\na stiff neck and high temperature (fever)\na sudden, severe headache that's unlike any headache you've had before\nswallowed something poisonous, or think you may have\nhave a stiff neck and pain when looking at bright lights\nyou've been vomiting repeatedly for more than a day or two\nyou're unable to keep down any fluids because you're vomiting repeatedly\nyou have signs of severe dehydration , such as confusion, a rapid heartbeat, sunken eyes and passing little or no urine\nyou've lost a lot of weight since you became ill\nyou experience episodes of vomiting frequently\nyou're worried about your vomiting and are feeling very unwell\nyou have diabetes and have been vomiting a lot, particularly if you take insulin as it can affect your blood sugar level"
+  },
+  {
+    "condition": "Vomiting in children and babies",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom/presentation label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "It's normal for babies and children to vomit sometimes. In most cases, it won't last longer than 1 to 2 days. It isn't usually a sign of anything serious. If your child is vomiting after a head injury, there are separate pages on severe head injury and minor head injury .",
+    "warnings": "A child is vomiting and they:\nare floppy, irritable or less responsive\ndevelop sudden and severe tummy pain\nhave a headache, stiff neck and a rash\nmay have swallowed something poisonous\nhave blood in their vomit, or the vomit looks like ground coffee\nhave green or yellow-green vomit\nhave a stiff neck and pain when looking at bright lights\na child vomits repeatedly and is unable to hold down fluids\na child has symptoms of dehydration - like a dry mouth, crying without tears, peeing less, not wetting many nappies, and drowsiness\na child vomits and it's green or contains blood\na child has been vomiting for more than a day or 2\na child is vomiting and has symptoms of an infection like a high temperature and irritability\na baby stops breast or bottle feeding while they're ill\na baby has vomited 3 times or more in the past 24 hours\nyou're worried about a child's symptoms\nIf your GP practice is closed, phone 111."
+  },
+  {
+    "condition": "Warts and verrucas",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "Warts are small lumps that often develop on the skin of the hands and feet. They vary in appearance and may develop singly or in clusters. Most people will have warts at some point in their life. They tend to affect children and teenagers more than adults.",
+    "warnings": "You have a:\ngrowth on your skin that you're worried about\nwart or verruca that keeps coming back\nwart or verruca that's very large or painful\nwart that bleeds\nwart that changes in how it looks\nwart on your face or genitals"
+  },
+  {
+    "condition": "Whooping cough",
+    "category": "manual_override",
+    "next_action": "Add a curated manual symptom override using only phrases supported by the symptoms field.",
+    "reason": "Clear condition-specific manifestations are present in the symptoms field, but the generic parser missed them. Add a source-grounded condition-specific override instead of widening global regex rules.",
+    "symptoms": "The first symptoms of whooping cough are similar to those of a cold , such as a runny nose, red and watery eyes, a sore throat, and a slightly raised temperature. Intense coughing bouts start about a week later. The bouts usually last a few minutes at a time and tend to be more common at night. Coughing usually brings up thick mucus and may be followed by vomiting. Between coughs, you or your child may gasp for breath - this may cause a 'whoop' sound, although not everyone has this. The strain of coughing can cause the face to become very red, and there may be some slight bleeding under the skin or in the eyes. Young children's skin can sometimes briefly turn dusky, blue (cyanosis) if they have trouble breathing. In very young babies, the cough may not be particularly noticeable, but there may be brief periods where they stop breathing. The bouts will eventually start to become less severe and less frequent over time, but it may be a few months before they stop completely.",
+    "warnings": "You or your child:\nhave significant breathing difficulties, such as long periods of breathlessness or choking, shallow breathing, periods where breathing stops, or dusky, blue skin\ndevelop signs of serious complications of whooping cough, such as fits (seizures) or pneumonia\nhave symptoms of whooping cough\nhave had a cough for more than 3 weeks\nhave a cough that is particularly severe or is getting worse"
+  }
+]

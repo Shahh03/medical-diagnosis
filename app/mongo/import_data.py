@@ -6,15 +6,19 @@ from pymongo import ReplaceOne
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT_DIR))
 
-from app.database.mongodb import db
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+from app.mongo.mongodb import db
 
 
 DATA_FILE = (
     ROOT_DIR
     / "app"
     / "dataset"
+    / "input"
+    / "conditioned"
     / "nhs_conditions_manual_final.json"
 )
 

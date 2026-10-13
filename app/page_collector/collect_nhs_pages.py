@@ -30,13 +30,13 @@ A_Z_URL = (
     "illnesses-and-conditions/a-to-z/"
 )
 
-OUTPUT_DIR = Path("data")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+OUTPUT_DIR = PROJECT_ROOT / "app" / "dataset" / "input" / "scraped"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 OUTPUT_JSON = OUTPUT_DIR / "nhs_all_pages.json"
 ERROR_JSON = OUTPUT_DIR / "nhs_all_pages_errors.json"
-
-
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "

@@ -1,0 +1,130 @@
+[
+  {
+    "condition": "Arthritis",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field is generic, while a concrete joint symptom list is stored in warnings. Fix the source-field classification upstream.",
+    "symptoms": "Your symptoms will vary depending on the type of arthritis you have.",
+    "warnings": "joint pain\ntenderness in the joints\nstiffness in the joints\ninflammation in and around the joints\nrestricted movement in the joints\nwarm, red skin on your joints\nweakness and muscle wasting"
+  },
+  {
+    "condition": "Bowel incontinence",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field is dominated by management/advice rather than a clean presentation. Revisit the source extraction rather than forcing a regex.",
+    "symptoms": "There are also ways of managing your symptoms of bowel incontinence. Incontinence products (like pads) aren't a treatment for incontinence. However, you might find them helpful day-to-day while you're waiting for assessment or for a treatment to take effect. These products may help you feel more confident during everyday activities, like socialising or exercising. Your local NHS continence service can offer help and advice about continence products. You don't usually need a referral from your GP to make an appointment. You can also buy these products from pharmacies or online. These plugs are made of foam or silicone and are inserted in to your anus (bottom) in a similar way to a tampon. They create a barrier and stop any leaks. Your local NHS continence service can give you advice about how to use these and where to get them. Wear trousers or skirts that are easy to undo and have elasticated waistbands rather than buttons. Disability Rights UK offers access to 9,000 disabled toilets around the UK with a Radar NKS key . The key costs £5.00 and is only sold to people who need use of toilet facilities due to a disability or health condition.",
+    "warnings": "think you have bowel incontinence\nhave any changes in your poo that aren't getting better, like having softer poo, diarrhoea or constipation that isn't usual for you"
+  },
+  {
+    "condition": "Brain stem death",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This is a postmortem/brain-function definition, not a conventional symptom-driven diagnosis target.",
+    "symptoms": "Brain stem death is when a person no longer has any brain stem function. When someone loses their brain stem function permanently, medical professionals will confirm they're dead.",
+    "warnings": ""
+  },
+  {
+    "condition": "Chronic obstructive pulmonary disease (COPD)",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field only gives a broad breathing-difficulty statement, while the warnings field contains the detailed presentation list. Reclassify source fields upstream.",
+    "symptoms": "Chronic obstructive pulmonary disease (COPD) is a collection of lung diseases. It includes chronic bronchitis, emphysema and chronic obstructive airways disease. People with COPD have difficulties breathing. COPD does not usually become noticeable until after the age of 35. Most people diagnosed with the condition are over 50 years old.",
+    "warnings": "you feel more breathlessness when exercising or moving around\nyou have a cough with mucus (phlegm) that never seems to go away\nyou get chest infections often, particularly in winter\nyou're wheezing\nyou're a smoker, or used to be a smoker and you have a persistent chesty cough, especially in the morning\nyou have COPD and you're having a flare-up (particularly bad symptoms) that's worse than normal\nChest pain and coughing up blood (haemoptysis) are not common symptoms of COPD."
+  },
+  {
+    "condition": "Headaches",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom label; including it can make evaluation trivial because the input symptom and class label are nearly identical.",
+    "symptoms": "Most headaches are not serious. In many cases, you can treat your headache at home.",
+    "warnings": "You have a headache and:\nit began after a severe head injury\nit started suddenly and is very severe - it may feel like a blinding pain\nnew sudden symptoms of a stroke , like being unable to walk, having weakness down one side of the face or body, or slurred speech\nsymptoms of meningitis or sepsis , like a high fever with a stiff neck\nare not responding normally, or are very drowsy and struggling to stay awake\nvisual problems that are new and different to any you've experienced before, and are not related to a migraine\nalso feel more confused than usual\nthe whole of your eye is red\nchanges in your vision\nit does not go away and gets worse over time\nis triggered suddenly by coughing, laughing, sneezing, changing posture, or physical effort\nas well as a sore scalp, or jaw pain while chewing, and you're over 50 years old\nthat is new or getting worse, and you're dizzy, vomiting or feeling weak\nare immunocompromised\nare pregnant or have just given birth\nhave been in contact with carbon monoxide\nhave a blood clotting disorder (haemophilia) or are taking blood thinning medicine (like warfarin or apixaban)\nPhone 111 if your GP practice is closed. a headache that is getting worse despite treatment\nfrequent or painful headaches that affect your daily activities or cause you to miss work\na headache that wakes you up when you're sleeping\na headache and currently have, or have had, cancer"
+  },
+  {
+    "condition": "Heart failure",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field only says there is a range of symptoms; the concrete breathlessness/cough/fatigue/swelling list is in warnings.",
+    "symptoms": "When the heart is not pumping blood as well as it should, you can experience a range of symptoms.",
+    "warnings": "You have:\nbreathlessness\na persistent cough\ntiredness or fatigue that occurs even at rest and gets worse with movement\nswelling in the legs or ankles"
+  },
+  {
+    "condition": "High blood pressure (hypertension)",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "The page explicitly says high blood pressure often has no symptoms; severe-warning symptoms should not be treated as the ordinary presentation.",
+    "symptoms": "High blood pressure often has no symptoms. So, if you think you may have high blood pressure, or you're on medication for it, you should check your blood pressure regularly. In rare cases, high blood pressure may cause symptoms.",
+    "warnings": "You have symptoms of very high blood pressure like:\nheadaches\nblurred or double vision\nregular nosebleeds\nshortness of breath"
+  },
+  {
+    "condition": "Obesity",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This condition is primarily identified by body composition/BMI rather than a symptom phrase from this source text.",
+    "symptoms": "Obesity is a chronic condition. Having obesity means you have too much body fat which could cause risks to your health.",
+    "warnings": ""
+  },
+  {
+    "condition": "Recurrent miscarriage",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "The condition is defined by pregnancy history rather than a current symptom presentation.",
+    "symptoms": "Recurrent miscarriage is when you've experienced 3 or more early miscarriages. 3 or more early miscarriages refers to the total number of early miscarriages you've had. It does not matter if you've had a successful pregnancy in-between miscarriages. The miscarriages do not need to happen one after the other.",
+    "warnings": "struggling to cope after losing a pregnancy\nshowing signs of post-traumatic stress disorder\nshowing signs of perinatal obsessive-compulsive disorder (OCD)\nThey'll be able to help you get appropriate treatment and support."
+  },
+  {
+    "condition": "Severe head injury",
+    "category": "source_field_fix",
+    "next_action": "Fix the upstream dataset field assignment/re-extraction, then rerun preprocessing.",
+    "reason": "The symptoms field is generic; the concrete neurological/red-flag presentation is in warnings.",
+    "symptoms": "The symptoms of a severe head injury can vary from person to person.",
+    "warnings": "You or someone else has a head injury and:\nis unresponsive to their name or a gentle chest rub\ncannot stay awake\nhas had a seizure (fit)\nhas fallen from a height like 5 or more stairs\nis having problems with their senses, like hearing loss or double vision\nhas numbness or weakness in any part of their body\nis struggling to walk, balance, speak, write, or understand other people\nhit their head with force, like being hit by a car\nhas a head wound with something inside it, like glass\nhas signs of damage to their skull, like a dent in their head\nhas severe neck pain or cannot move their head\nis confused or was 'knocked out' for any length of time\nhas vomited\nhas a persistent headache that is not helped by painkillers\nis showing unusual behaviour, like being very irritable or crying more than usual\nhas memory loss (amnesia)\nis intoxicated due to alcohol or recreational drugs\nhas a blood clotting disorder (haemophilia) or takes blood thinning medicine (like warfarin or apixaban)\nhas previously had brain surgery\nhas a large bruise or wound to the head or face\nhas a black eye\nhas blood or clear fluid coming from their ears or nose\nhas bruising behind their ears\nthe injury wasn't accidental, for example if someone else has hurt a child on purpose"
+  },
+  {
+    "condition": "Shortness of breath",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "It's normal to get out of breath when you've overexerted yourself. But when breathlessness comes on suddenly and unexpectedly, it's usually a sign of a medical condition.",
+    "warnings": "you have severe difficulty breathing - for example, you struggle to speak without pausing, gasping or choking\nyou have severe chest pain in the middle of your chest that isn't going away - it may feel like pressure, tightness or squeezing\nyou have pain that spreads to your arms, back, neck and jaw\nyou feel more drowsy than usual or find it more difficult to wake up\nyour lips or skin are turning very pale, blue or grey - on brown or black skin this is easier to see on the palms of your hands\nInformation on breathing problems in children\nhave difficulty breathing - you may be more short of breath than usual\nhave pain when breathing in or coughing\nare feeling confused, dizzy, or lightheaded\nfeel sick or are being sick - for example, you can't keep food or fluids down\nare coughing up blood (haemoptysis)\nhave pain or swelling in 1 of your legs\nhave heart palpitations - this may feel like your heart is racing, going too slowly or skipping a beat or like a fluttering feeling in your chest\nIf your GP practice is closed, phone 111. have symptoms that are not improving\nhave had a cough for more than 3 weeks\nYour doctor may ask you some questions, such as:\ndid the breathlessness come on suddenly or slowly? did anything trigger it, such as exercise? how bad is it? does it only happen when you've been active, or when you're not doing anything? is there any pain when you breathe? do you have a cough? do certain positions make it worse - for example, can you lie down? Feeling like you can't get enough air can be scary. Make sure you get help from a healthcare professional. They may give you extra oxygen to breathe if you need it."
+  },
+  {
+    "condition": "Sore throat",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "Sore throats are very common and usually nothing to worry about. They normally get better within a week. Most are caused by minor illnesses such as cold or flu and can be treated at home.",
+    "warnings": "You or your child have:\nsymptoms that are severe or getting worse quickly\ndifficulty breathing or swallowing\nsevere pain\nstarted drooling\na muffled voice\na high-pitched sound as you breathe (stridor)\nIf you have a sore throat, you can get advice and treatment directly from a pharmacy. You don't usually need to get medical advice if you have a sore throat. Your pharmacist may advise you to see your GP if:\nyour symptoms are severe - for example with a high temperature or you feel shivery\nyou have persistent symptoms that haven't started to improve after a week\nyou experience severe sore throats frequently\nyou have a weak immune system - for example, you have HIV , are having chemotherapy , or are taking medication that suppresses your immune system\nIf your GP practice is closed, phone 111 . If you have a persistent sore throat (one that lasts 3 to 4 weeks), you should see your GP who may refer you for further tests. This is because your sore throat may be a symptom of a more serious condition."
+  },
+  {
+    "condition": "Stillbirth",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This is an outcome/event definition rather than a symptom-driven condition label.",
+    "symptoms": "A stillbirth is when a baby dies after the 24th week of a pregnancy or during birth. It's a devastating experience for parents and can affect you and your family in ways you don't expect.",
+    "warnings": ""
+  },
+  {
+    "condition": "Sudden arrhythmic death syndrome (SADS)",
+    "category": "exclude_or_keep_zero",
+    "next_action": "Keep at zero and exclude from symptom-only classifier training unless the model design later adds non-symptom inputs.",
+    "reason": "This is a sudden-death/postmortem diagnosis and is not suitable for a symptom-only classifier.",
+    "symptoms": "Sudden arrhythmic death syndrome (SADS) is when someone dies suddenly and unexpectedly from a cardiac arrest but there's no clear cause.",
+    "warnings": ""
+  },
+  {
+    "condition": "Vomiting in adults",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom/presentation label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "Nausea and vomiting in adults isn't usually a sign of anything serious. It tends to only last 1 or 2 days. Vomiting is the body's way of getting rid of harmful substances from the stomach, or it may be a reaction to something that has irritated the gut. One of the most common causes of vomiting in adults is gastroenteritis . This is an infection of the gut usually caused by bacteria or a virus. It'll normally improve within a few days. Vomiting can occasionally be a sign of something more serious, such as appendicitis . There is a separate page on vomiting in children and babies . If you're vomiting after a head injury, there are separate pages on severe head injury and minor head injury .",
+    "warnings": "You're vomiting and you also have:\nsudden, severe abdominal (tummy) pain\nsevere chest pain\nblood in your vomit or what looks like coffee granules\nhave green or yellow-green vomit\na stiff neck and high temperature (fever)\na sudden, severe headache that's unlike any headache you've had before\nswallowed something poisonous, or think you may have\nhave a stiff neck and pain when looking at bright lights\nyou've been vomiting repeatedly for more than a day or two\nyou're unable to keep down any fluids because you're vomiting repeatedly\nyou have signs of severe dehydration , such as confusion, a rapid heartbeat, sunken eyes and passing little or no urine\nyou've lost a lot of weight since you became ill\nyou experience episodes of vomiting frequently\nyou're worried about your vomiting and are feeling very unwell\nyou have diabetes and have been vomiting a lot, particularly if you take insulin as it can affect your blood sugar level"
+  },
+  {
+    "condition": "Vomiting in children and babies",
+    "category": "symptom_page",
+    "next_action": "Decide at training-set design time whether symptom-page labels should be included; do not force them through the disease parser now.",
+    "reason": "This NHS page is itself a symptom/presentation label; decide separately whether symptom-page labels belong in the disease classifier.",
+    "symptoms": "It's normal for babies and children to vomit sometimes. In most cases, it won't last longer than 1 to 2 days. It isn't usually a sign of anything serious. If your child is vomiting after a head injury, there are separate pages on severe head injury and minor head injury .",
+    "warnings": "A child is vomiting and they:\nare floppy, irritable or less responsive\ndevelop sudden and severe tummy pain\nhave a headache, stiff neck and a rash\nmay have swallowed something poisonous\nhave blood in their vomit, or the vomit looks like ground coffee\nhave green or yellow-green vomit\nhave a stiff neck and pain when looking at bright lights\na child vomits repeatedly and is unable to hold down fluids\na child has symptoms of dehydration - like a dry mouth, crying without tears, peeing less, not wetting many nappies, and drowsiness\na child vomits and it's green or contains blood\na child has been vomiting for more than a day or 2\na child is vomiting and has symptoms of an infection like a high temperature and irritability\na baby stops breast or bottle feeding while they're ill\na baby has vomited 3 times or more in the past 24 hours\nyou're worried about a child's symptoms\nIf your GP practice is closed, phone 111."
+  }
+]
