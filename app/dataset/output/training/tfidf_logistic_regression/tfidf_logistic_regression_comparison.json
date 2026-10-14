@@ -1,0 +1,64 @@
+{
+  "createdAt": "2026-10-14T07:10:21.483562+00:00",
+  "selected_model_for_micro_f1": "tfidf_logistic_regression_v3",
+  "selected_model_for_top_5": "tfidf_logistic_regression_v2",
+  "selection_metric": "validation Micro F1",
+  "dataset_sha256": {
+    "train_json_sha256": "292fc80ddc16cc5afa9b49d9b93263775118e14af3b3de2795db7d06f336a6e1",
+    "validation_json_sha256": "c61e0a2ab6524829ddf29979de836c11623f40c1d3a10084af6a34cc0b340f19"
+  },
+  "training_examples": 5494,
+  "validation_examples": 1177,
+  "class_count": 376,
+  "test_set_used": false,
+  "comparison": [
+    {
+      "model": "v1",
+      "word_ngrams": "(1, 3)",
+      "C": 20.0,
+      "class_weight": "balanced",
+      "threshold": 0.675,
+      "micro_precision": 0.8478260869565217,
+      "micro_recall": 0.7284046692607004,
+      "micro_f1": 0.7835914608622855,
+      "macro_f1_supported": 0.7736703333380893,
+      "weighted_f1": 0.7745410575980018,
+      "top_1": 0.8793542905692439,
+      "top_3": 0.9447748513169074,
+      "top_5": 0.9651656754460493,
+      "training_seconds": 28.351055199978873
+    },
+    {
+      "model": "v2",
+      "word_ngrams": "(1, 3)",
+      "C": 5.0,
+      "class_weight": "None",
+      "threshold": 0.05,
+      "micro_precision": 0.8188034188034188,
+      "micro_recall": 0.7455252918287938,
+      "micro_f1": 0.780448065173116,
+      "macro_f1_supported": 0.7690355981444957,
+      "weighted_f1": 0.7832444827046066,
+      "top_1": 0.897196261682243,
+      "top_3": 0.9575191163976211,
+      "top_5": 0.9753610875106202,
+      "training_seconds": 17.923843200085685
+    },
+    {
+      "model": "v3",
+      "word_ngrams": "(1, 4)",
+      "C": 10.0,
+      "class_weight": "balanced",
+      "threshold": 0.6,
+      "micro_precision": 0.8258620689655173,
+      "micro_recall": 0.7455252918287938,
+      "micro_f1": 0.783640081799591,
+      "macro_f1_supported": 0.7829998955464161,
+      "weighted_f1": 0.7830187668523865,
+      "top_1": 0.887000849617672,
+      "top_3": 0.9498725573491928,
+      "top_5": 0.9694137638062872,
+      "training_seconds": 35.71752479998395
+    }
+  ]
+}

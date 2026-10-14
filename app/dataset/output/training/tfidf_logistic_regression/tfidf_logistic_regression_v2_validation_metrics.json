@@ -1,0 +1,292 @@
+{
+  "model": "tfidf_logistic_regression_v2",
+  "metadata": {
+    "name": "tfidf_logistic_regression_v2",
+    "type": "TF-IDF + Logistic Regression (One-vs-Rest multi-label)",
+    "createdAt": "2026-10-14T07:10:21.483562+00:00",
+    "training_examples": 5494,
+    "validation_examples": 1177,
+    "class_count": 376,
+    "validation_supported_class_count": 324,
+    "validation_missing_class_count": 52,
+    "training_seconds": 17.924,
+    "scikit_learn_version": "1.9.1",
+    "random_seed": 42,
+    "features": "symptoms_classical",
+    "tfidf": {
+      "kind": "word",
+      "analyzer": "word",
+      "ngram_range": [
+        1,
+        3
+      ],
+      "min_df": 1,
+      "max_features": 50000,
+      "sublinear_tf": true,
+      "vocabulary_size": 31153
+    },
+    "classifier": {
+      "solver": "liblinear",
+      "C": 5.0,
+      "class_weight": null,
+      "max_iter": 1000
+    },
+    "dataset_sha256": {
+      "train_json_sha256": "292fc80ddc16cc5afa9b49d9b93263775118e14af3b3de2795db7d06f336a6e1",
+      "validation_json_sha256": "c61e0a2ab6524829ddf29979de836c11623f40c1d3a10084af6a34cc0b340f19"
+    },
+    "evaluation_scope": "NHS-derived symptom subsets; validation only; no test access",
+    "probability_note": "Scores are not clinically calibrated disease probabilities"
+  },
+  "validation_metrics": {
+    "selected_threshold": 0.05,
+    "micro_precision": 0.8188034188034188,
+    "micro_recall": 0.7455252918287938,
+    "micro_f1": 0.780448065173116,
+    "macro_f1_all_classes": 0.6626796111670654,
+    "macro_f1_validation_supported_classes": 0.7690355981444957,
+    "weighted_f1": 0.7832444827046066,
+    "top_k": {
+      "top_1": {
+        "top_k": 1,
+        "hit_rate": 0.897196261682243,
+        "label_recall_at_k": 0.8830086580086581
+      },
+      "top_3": {
+        "top_k": 3,
+        "hit_rate": 0.9575191163976211,
+        "label_recall_at_k": 0.9457286482987418
+      },
+      "top_5": {
+        "top_k": 5,
+        "hit_rate": 0.9753610875106202,
+        "label_recall_at_k": 0.9648197596795728
+      }
+    }
+  },
+  "threshold_search": [
+    {
+      "threshold": 0.05,
+      "micro_f1": 0.780448065173116,
+      "micro_precision": 0.8188034188034188,
+      "micro_recall": 0.7455252918287938
+    },
+    {
+      "threshold": 0.075,
+      "micro_f1": 0.7784380305602716,
+      "micro_precision": 0.8562091503267973,
+      "micro_recall": 0.7136186770428016
+    },
+    {
+      "threshold": 0.1,
+      "micro_f1": 0.7668122270742358,
+      "micro_precision": 0.8736318407960199,
+      "micro_recall": 0.6832684824902724
+    },
+    {
+      "threshold": 0.125,
+      "micro_f1": 0.7607142857142857,
+      "micro_precision": 0.8921465968586387,
+      "micro_recall": 0.6630350194552529
+    },
+    {
+      "threshold": 0.15,
+      "micro_f1": 0.7532820280669986,
+      "micro_precision": 0.9004329004329005,
+      "micro_recall": 0.6474708171206226
+    },
+    {
+      "threshold": 0.175,
+      "micro_f1": 0.7450254511800093,
+      "micro_precision": 0.9189497716894978,
+      "micro_recall": 0.6264591439688716
+    },
+    {
+      "threshold": 0.2,
+      "micro_f1": 0.7386203660253402,
+      "micro_precision": 0.9302600472813238,
+      "micro_recall": 0.6124513618677043
+    },
+    {
+      "threshold": 0.225,
+      "micro_f1": 0.7339971550497866,
+      "micro_precision": 0.9393203883495146,
+      "micro_recall": 0.6023346303501945
+    },
+    {
+      "threshold": 0.25,
+      "micro_f1": 0.7290167865707434,
+      "micro_precision": 0.95,
+      "micro_recall": 0.5914396887159533
+    },
+    {
+      "threshold": 0.275,
+      "micro_f1": 0.7274481427882297,
+      "micro_precision": 0.9568527918781726,
+      "micro_recall": 0.5867704280155642
+    },
+    {
+      "threshold": 0.3,
+      "micro_f1": 0.7228446176327326,
+      "micro_precision": 0.9661458333333334,
+      "micro_recall": 0.5774319066147859
+    },
+    {
+      "threshold": 0.325,
+      "micro_f1": 0.7145669291338582,
+      "micro_precision": 0.9718875502008032,
+      "micro_recall": 0.5649805447470817
+    },
+    {
+      "threshold": 0.35,
+      "micro_f1": 0.7089737233515121,
+      "micro_precision": 0.976775956284153,
+      "micro_recall": 0.556420233463035
+    },
+    {
+      "threshold": 0.375,
+      "micro_f1": 0.7007007007007007,
+      "micro_precision": 0.9817671809256662,
+      "micro_recall": 0.5447470817120622
+    },
+    {
+      "threshold": 0.4,
+      "micro_f1": 0.6938569989929506,
+      "micro_precision": 0.9828815977175464,
+      "micro_recall": 0.5361867704280155
+    },
+    {
+      "threshold": 0.425,
+      "micro_f1": 0.6836215666327569,
+      "micro_precision": 0.986784140969163,
+      "micro_recall": 0.5229571984435798
+    },
+    {
+      "threshold": 0.45,
+      "micro_f1": 0.6694087403598972,
+      "micro_precision": 0.9863636363636363,
+      "micro_recall": 0.5066147859922179
+    },
+    {
+      "threshold": 0.475,
+      "micro_f1": 0.6597617814603832,
+      "micro_precision": 0.9860681114551083,
+      "micro_recall": 0.49571984435797667
+    },
+    {
+      "threshold": 0.5,
+      "micro_f1": 0.6524008350730689,
+      "micro_precision": 0.9904912836767037,
+      "micro_recall": 0.48638132295719844
+    },
+    {
+      "threshold": 0.525,
+      "micro_f1": 0.6392405063291139,
+      "micro_precision": 0.9918166939443536,
+      "micro_recall": 0.4715953307392996
+    },
+    {
+      "threshold": 0.55,
+      "micro_f1": 0.6257995735607675,
+      "micro_precision": 0.9932318104906938,
+      "micro_recall": 0.45680933852140077
+    },
+    {
+      "threshold": 0.575,
+      "micro_f1": 0.6224598930481283,
+      "micro_precision": 0.9948717948717949,
+      "micro_recall": 0.4529182879377432
+    },
+    {
+      "threshold": 0.6,
+      "micro_f1": 0.6075675675675676,
+      "micro_precision": 0.9946902654867257,
+      "micro_recall": 0.43735408560311284
+    },
+    {
+      "threshold": 0.625,
+      "micro_f1": 0.5895890410958904,
+      "micro_precision": 0.9962962962962963,
+      "micro_recall": 0.41867704280155643
+    },
+    {
+      "threshold": 0.65,
+      "micro_f1": 0.5779005524861879,
+      "micro_precision": 0.9961904761904762,
+      "micro_recall": 0.40700389105058365
+    },
+    {
+      "threshold": 0.675,
+      "micro_f1": 0.5636160714285714,
+      "micro_precision": 0.9960552268244576,
+      "micro_recall": 0.39299610894941633
+    },
+    {
+      "threshold": 0.7,
+      "micro_f1": 0.5449406444318824,
+      "micro_precision": 0.9958677685950413,
+      "micro_recall": 0.37509727626459144
+    },
+    {
+      "threshold": 0.725,
+      "micro_f1": 0.5289066971951918,
+      "micro_precision": 1.0,
+      "micro_recall": 0.3595330739299611
+    },
+    {
+      "threshold": 0.75,
+      "micro_f1": 0.5092807424593968,
+      "micro_precision": 1.0,
+      "micro_recall": 0.3416342412451362
+    },
+    {
+      "threshold": 0.775,
+      "micro_f1": 0.48645465253239106,
+      "micro_precision": 1.0,
+      "micro_recall": 0.32140077821011676
+    },
+    {
+      "threshold": 0.8,
+      "micro_f1": 0.4592326139088729,
+      "micro_precision": 1.0,
+      "micro_recall": 0.2980544747081712
+    },
+    {
+      "threshold": 0.825,
+      "micro_f1": 0.4213759213759214,
+      "micro_precision": 1.0,
+      "micro_recall": 0.2669260700389105
+    },
+    {
+      "threshold": 0.85,
+      "micro_f1": 0.38972431077694236,
+      "micro_precision": 1.0,
+      "micro_recall": 0.24202334630350195
+    },
+    {
+      "threshold": 0.875,
+      "micro_f1": 0.3546734955185659,
+      "micro_precision": 1.0,
+      "micro_recall": 0.21556420233463036
+    },
+    {
+      "threshold": 0.9,
+      "micro_f1": 0.30809743252139565,
+      "micro_precision": 1.0,
+      "micro_recall": 0.1821011673151751
+    },
+    {
+      "threshold": 0.925,
+      "micro_f1": 0.24333561175666438,
+      "micro_precision": 1.0,
+      "micro_recall": 0.13852140077821012
+    },
+    {
+      "threshold": 0.95,
+      "micro_f1": 0.1563845050215208,
+      "micro_precision": 1.0,
+      "micro_recall": 0.08482490272373541
+    }
+  ],
+  "test_set_used": false
+}
